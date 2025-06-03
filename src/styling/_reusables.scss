@@ -1,0 +1,70 @@
+/* colors */
+$lavender-indigo: #7C5DFA;
+$light-coral: rgb(255, 151, 151);
+$charcoal-blue: #1E2139;
+$forest-green: #259245;
+$rich-black: #0c1227;
+$cool-gray: #7E88C3;
+$light-slate-blue: #888EB0;
+$lavender-mist: #DFE3FA;
+$coral-red: #EC5757;
+$ghost-white: #F8F8FB;
+$dark-charcoal: #141625;
+$medium-purple: #9277FF;
+$space-grey: #373B53;
+$white: #ffffff;
+$yellow: #FF8F00;
+$snow-tint: #F9FAFE;
+$slate-indigo: #48549F;
+
+
+
+
+/* fonts */
+@mixin h1-spartan() {
+    font-size: 2rem;
+    line-height: 2.25rem;
+    // line-spacing: -1;
+}
+
+
+@mixin h2-spartan() {
+    font-size: 1.25rem;
+    line-height: 1.375rem;
+    // word-spacing: -0.63
+}
+
+
+@mixin h3-spartan() {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    // word-spacing: -0.8
+}
+
+
+@mixin h3-spartan-small {
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+    // word-spacing: -0.8
+}
+
+
+
+@mixin container-style-flex {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+}
+
+
+@mixin display-flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+
+@mixin display-flex-column {
+    display: flex;
+    flex-direction: column;
+}

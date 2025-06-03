@@ -1,0 +1,47 @@
+@use '../../../styling/reusables' as *;
+
+
+.nav-bar {
+    @include display-flex-column;
+    height: 100%;
+    justify-content: space-between;
+    background-color: $space-grey;
+    border-bottom-right-radius: 1.25rem;
+
+    .logo {
+        background-color: $lavender-indigo;
+        height: 6.438rem;
+        width: 6.438rem;
+        padding: 2rem;
+        border-bottom-right-radius: 1.25rem;
+        border-top-right-radius: 1.25rem;
+    }
+
+    .logo-icon {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    .theme-and-user {
+        @include display-flex-column;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1.5rem;
+        height: 6.438rem;
+    }
+
+    .avatar {
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 100%;
+    }
+
+    .toggle-icon {
+        width: 1.3rem;
+        height: 1.3rem;
+    }
+
+}
+
+
+
