@@ -38,8 +38,11 @@ export class InvoiceService {
   }
 
 
-  fetchTargetInvoice(invoiceID: string) {
-
+  fetchTargetInvoice(invoiceID: string): InvoiceInterface | undefined {
+    let currentInvoices = this.allInvoicesArray.getValue();
+    let targetInvoice = currentInvoices.find( invoice => invoice.id === invoiceID )
+    return targetInvoice;
+    
   }
 
 

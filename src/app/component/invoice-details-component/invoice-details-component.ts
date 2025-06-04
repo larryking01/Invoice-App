@@ -2,6 +2,9 @@ import { Component, inject, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Sidebar } from '../sidebar/sidebar';
+import { InvoiceService } from '../../services/invoice-service';
+import { InvoiceInterface } from '../../shared/invoiceInterface';
+
 
 
 @Component({
@@ -14,12 +17,18 @@ export class InvoiceDetailsComponent implements OnInit {
   router = inject( Router )
   location = inject( Location )
   activeRoute = inject( ActivatedRoute )
-
-  selectedInvoiceID: string | null = null;
+  invoiceService = inject( InvoiceService )
+  selectedInvoiceID: string = '';
+  selectedInvoice: InvoiceInterface | undefined = undefined;
 
   ngOnInit(): void {
-    this.selectedInvoiceID = this.activeRoute.snapshot.paramMap.get('id')
-    // console.log(`selected route id = ${ this.selectedInvoiceID }`)
+    this.selectedInvoiceID = this.activeRoute.snapshot.paramMap.get('id')!
+    console.log(`selected route id = ${ this.selectedInvoiceID }`)
+
+    this.selectedInvoice = this.invoiceService.fetchTargetInvoice( this.selectedInvoiceID as string );
+    console.log('selected invoice = ', this.selectedInvoice )
+    console.log('selected invoice id = ', this.selectedInvoice?.clientCity )
+
   }
 
   goBackNavigation() {

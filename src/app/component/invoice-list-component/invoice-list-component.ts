@@ -41,17 +41,21 @@ export class InvoiceListComponent implements OnInit {
     paymentDate: "2025-06-10",
     clientName: "Acme Corp",
     clientEmail: "client@acme.com",
+    clientCompany: "Nestle",
+    invoicePurpose: 'Marketing',
     status: InvoiceStatus.draft,
     items: [
       {
         itemName: "Landing Page Design",
         quantity: "2",
         price: "500",
+        itemTotal: "345"
       },
       {
         itemName: "Logo Design",
         quantity: "1",
         price: "200",
+        itemTotal: "123"
       }
     ],
     clientCountry: "USA",

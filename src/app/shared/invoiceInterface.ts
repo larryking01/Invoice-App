@@ -9,6 +9,7 @@ export interface InvoiceItem {
     itemName: string,
     quantity: string,
     price: string,
+    itemTotal: string
 }
 
 
@@ -16,6 +17,8 @@ export interface InvoiceInterface {
     id: string,
     invoiceName: string,
     invoiceDate: string,
+    invoicePurpose: string,
+    clientCompany: string,
     paymentDate: string,
     clientName: string,
     clientEmail: string,
