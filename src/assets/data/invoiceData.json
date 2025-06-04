@@ -1,6 +1,6 @@
 [
   {
-    "id": "INV-001",
+    "id": "RT3080",
     "invoiceName": "Website Design",
     "invoiceDate": "2025-06-01",
     "paymentDate": "2025-06-10",
@@ -11,23 +11,22 @@
       {
         "itemName": "Landing Page Design",
         "quantity": "2",
-        "price": "500",
-        "total": "1000"
+        "price": "500"
       },
       {
         "itemName": "Logo Design",
         "quantity": "1",
-        "price": "200",
-        "total": "200"
+        "price": "200"
       }
     ],
     "clientCountry": "USA",
     "clientCity": "New York",
     "clientStreetName": "Broadway",
-    "clientStreetNumber": "123"
+    "clientStreetNumber": "123",
+    "totalPrice": "3,543.96"
   },
   {
-    "id": "INV-002",
+    "id": "IH3080",
     "invoiceName": "Mobile App Development",
     "invoiceDate": "2025-05-25",
     "paymentDate": "2025-06-15",
@@ -38,23 +37,23 @@
       {
         "itemName": "iOS App",
         "quantity": "1",
-        "price": "3000",
-        "total": "3000"
+        "price": "3000"
       },
       {
         "itemName": "Android App",
         "quantity": "1",
-        "price": "3000",
-        "total": "3000"
+        "price": "3000"
       }
     ],
     "clientCountry": "Canada",
     "clientCity": "Toronto",
     "clientStreetName": "King Street",
-    "clientStreetNumber": "456"
+    "clientStreetNumber": "456",
+    "totalPrice": "8,543.96"
+
   },
   {
-    "id": "INV-003",
+    "id": "WK3080",
     "invoiceName": "SEO Optimization",
     "invoiceDate": "2025-04-15",
     "paymentDate": "2025-04-30",
@@ -65,19 +64,18 @@
       {
         "itemName": "Initial Audit",
         "quantity": "1",
-        "price": "400",
-        "total": "400"
+        "price": "400"
       },
       {
         "itemName": "Monthly Maintenance",
         "quantity": "3",
-        "price": "250",
-        "total": "750"
+        "price": "250"
       }
     ],
     "clientCountry": "UK",
     "clientCity": "London",
     "clientStreetName": "Oxford Street",
-    "clientStreetNumber": "789"
+    "clientStreetNumber": "789",
+    "totalPrice": "5,543.96"
   }
 ]

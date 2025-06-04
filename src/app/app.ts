@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { InvoiceListComponent } from "./component/invoice-list-component/invoice-list-component";
 import { InvoiceDetailsComponent } from './component/invoice-details-component/invoice-details-component';
 
+
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, InvoiceListComponent, InvoiceDetailsComponent],
@@ -10,5 +11,5 @@ import { InvoiceDetailsComponent } from './component/invoice-details-component/i
   styleUrl: './app.scss'
 })
 export class App {
-  protected title = 'Invoice_App';
+  protected title = 'Invoice App';
 }
