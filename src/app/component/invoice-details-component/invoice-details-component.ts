@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
+import { Sidebar } from '../sidebar/sidebar';
+
 
 @Component({
-  selector: 'app-invoice-details-component',
-  imports: [],
+  selector: 'invoice-details-component',
+  imports: [ Sidebar ],
   templateUrl: './invoice-details-component.html',
   styleUrl: './invoice-details-component.scss'
 })

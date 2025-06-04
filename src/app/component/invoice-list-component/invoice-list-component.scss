@@ -1,0 +1,145 @@
+@use '../../../styling/reusables' as *;
+
+
+.invoice-list-container {
+    @include container-style-flex;
+    
+
+    .content {
+        width: 100%;
+    }
+
+    .header {
+        max-width: 45.625rem;
+        height: 4rem;
+        @include display-flex-row;
+        justify-content: space-between;
+        margin: 4.5rem auto;
+    }
+
+
+    .invoice-status {
+        @include display-flex-column;
+        justify-content: space-between;
+    }
+
+    .select-options-article {
+        @include display-flex-row;
+        align-items: center;
+        justify-content: space-between;
+        width: 19.25rem;
+    }
+
+
+    .new-invoice-button {
+        width: 9.375rem;
+        height: 3rem;
+        border-radius: 3rem;
+        background-color: $lavender-indigo;
+        border: none;
+        cursor: pointer;
+        @include display-flex-row;
+        justify-content: space-between;
+        align-items: center;
+        color: $lavender-mist;
+        padding: 1rem;
+        
+    }
+    
+    .btn-icon-plus-div {
+        background-color: $white;
+        border-radius: 100%;
+        width: 2rem;
+        height: 2rem;
+        padding: 0.5rem;
+    }
+
+    .btn-icon-plus {
+        color: $lavender-mist;
+        width: 0.625rem;
+        height: 0.625rem;
+    }
+
+    .invoice-title {
+        width: 5rem;
+        color: $white;
+    }
+
+    .display-invoices {
+        // background-color: red;
+        max-width: 45.625rem;
+        margin: 4.5rem auto;
+
+    }
+
+    .invoice-card {
+        background-color: blue;
+        height: 4.5rem;
+        @include display-flex-row;
+        padding: 1.75rem 2rem;
+        justify-content: space-between;
+        background-color: $white;
+        margin-bottom: 1rem;
+        border-radius: 0.5rem;
+        box-shadow: 0px 10px 10px -10px rgba(0, 0, 0, 0.25);
+    }
+
+
+    .invoice-id {
+        color: $dark-charcoal;
+        font-weight: bold;
+        font-size: 0.75rem;
+    }
+
+    .date {
+        color: $cool-gray;
+        font-size: 0.75rem;
+    }
+
+    .name {
+        color: $cool-gray;
+        font-size: 0.75rem;
+    }
+
+    .price {
+        font-size: 1rem;
+        font-weight: bold;
+    }
+
+    .icon-right {
+        width: 0.4rem;
+        height: 0.7rem;
+    }
+
+
+    .no-invoice {
+        width: 15.125rem;
+        height: 21.313rem;
+        // background-color: green;
+        margin: 0 auto;
+        padding: 1.25rem;
+    }
+
+
+    .illustration-empty {
+        width: 12.625rem;
+        height: 12.5rem;
+        margin-bottom: 4rem;
+    }
+
+    .nothing-here {
+        width: 13.625rem;
+        text-align: center;
+        font-size: 1.25rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .create-invoice-text {
+        width: 15.125rem;
+        line-height: 1;
+        letter-spacing: -0.25px;
+        font-size: 0.8rem;
+        color: $light-slate-blue;
+    }
+
+}

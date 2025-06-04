@@ -1,0 +1,210 @@
+@use 'sass:color';
+@use '../../../styling/reusables' as *;
+
+
+.invoice-details-container {
+    @include container-style-flex;
+
+    .inv-details-content {
+        width: 100%;
+        // background-color: green;
+    }
+
+    .main-content {
+        // background-color: red;
+        max-width: 45.625rem;
+        height: 90%;
+        margin: 2rem auto;
+    }
+
+    .go-back {
+        @include display-flex-row;
+        justify-content: space-between;
+        width: 5.063rem;
+        height: 0.938rem;
+        margin-bottom: 2rem;
+    }
+
+    .go-back-txt {
+        width: 3.313rem;
+        height: 0.938rem;
+        font-size: 0.75rem;
+        align-self: center;
+        position: relative;
+        top: 0.4rem;
+    }
+
+    .go-back-icon {
+        width: 0.529rem;
+        height: 0.264rem;
+        align-self: end;
+    }
+
+    .target-invoice-card {
+        width: 100%;
+        // background-color: red;
+        @include display-flex-row;
+        justify-content: space-between;
+        padding: 1.5rem 2rem;
+        box-shadow: 0 0.625rem 0.625rem -0.625rem $slate-indigo;
+        margin-bottom: 1.5rem;
+    }
+
+    .status-type {
+        @include display-flex-row;
+        justify-content: space-between;
+        width: 9.938rem;
+
+    }
+
+    .action-btns {
+        @include display-flex-row;
+        justify-content: space-between;
+        width: 19.313rem;
+    }
+
+    .status-text {
+        align-self: center;
+    }
+
+    .current-status {
+        width: 6.5rem;
+        background-color: color.adjust($yellow, $lightness: 40%);
+        color: $yellow;
+        border-radius: 0.675rem;
+        padding: 0.875rem;
+        text-align: center;
+    }
+
+    .edit {
+        width: 4.563rem;
+        height: 3rem;
+        background-color: $snow-tint;
+        color: $cool-gray;
+        padding: 1rem;
+        border-radius: 0.675rem;
+
+    }
+
+    .delete {
+        background-color: $coral-red;
+        color: $white;
+        width: 5.563rem;
+        height: 3rem;
+        padding: 1rem;
+        border-radius: 1.5rem;
+        text-align: center;
+    }
+
+    .mark-as-paid {
+        background-color: $lavender-indigo;
+        color: $white;
+        width: 8.188rem;
+        height: 3rem;
+        padding: 1rem;
+        border-radius: 0.675rem;
+        text-align: center;
+        border-radius: 1.5rem;
+    }
+
+
+    .target-invoice-details {
+        width: 100%;
+        padding: 3rem;
+    }
+
+    .invoice-intro {
+        height: 4.7rem;
+        @include display-flex-row;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+
+    }
+
+    .invoice-location {
+        p {
+            color: $cool-gray;
+            margin-bottom: 0.2rem;
+        }
+    }
+
+
+    .invoice-id-and-name {
+        p {
+            color:$cool-gray;
+        }
+
+        h3 {
+            color: $rich-black;
+            margin-bottom: 0.5rem;
+        }
+    }
+
+
+    .billing-info {
+        height: 8.125rem;
+        @include display-flex-row;
+        justify-content: space-between;
+        margin-bottom: 2.8rem;
+
+    }
+
+    .billing-dates {
+        @include display-flex-column;
+    }
+
+    .payment-date {
+        justify-self: end;
+    }
+
+
+    .item-display-table {
+        background-color: $snow-tint;
+        padding: 2rem;
+
+    }
+
+
+    .table-header {
+        @include display-flex-row;
+        justify-content: space-between;
+        margin-bottom: 2rem;
+
+        p {
+            color: $cool-gray;
+        }
+    }
+
+
+    .table-row {
+        @include display-flex-row;
+        justify-content: space-between;
+        margin-bottom: 2rem;
+    }
+
+
+    .amount-payable {
+        @include display-flex-row;
+        justify-content: space-between;
+        height: 5rem;
+        background-color: $space-grey;
+        color: $white;
+        padding: 0 2rem;
+        border-bottom-right-radius: 0.5rem;
+        border-bottom-left-radius: 0.5rem;
+
+        p {
+            font-size: 0.688rem;
+            align-self: center;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            align-self: center;
+        }
+
+    }
+
+
+
+}
