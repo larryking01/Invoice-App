@@ -1,0 +1,88 @@
+[
+  {
+    "id": "RT3080",
+    "invoiceName": "Website Design",
+    "invoiceDate": "2025-06-01",
+    "paymentDate": "2025-06-10",
+    "clientName": "Acme Corp",
+    "clientEmail": "client@acme.com",
+    "status": "Paid",
+    "items": [
+      {
+        "itemName": "Landing Page Design",
+        "quantity": "2",
+        "price": "500",
+        "itemTotal": "213"
+      },
+      {
+        "itemName": "Logo Design",
+        "quantity": "1",
+        "price": "200",
+        "itemTotal": "853"
+
+      }
+    ],
+    "clientCountry": "USA",
+    "clientCity": "New York",
+    "clientStreetName": "Broadway",
+    "clientStreetNumber": "123",
+    "totalPrice": "3,543.96"
+  },
+  {
+    "id": "IH3080",
+    "invoiceName": "Mobile App Development",
+    "invoiceDate": "2025-05-25",
+    "paymentDate": "2025-06-15",
+    "clientName": "BetaTech",
+    "clientEmail": "info@betatech.com",
+    "status": "Pending",
+    "items": [
+      {
+        "itemName": "iOS App",
+        "quantity": "1",
+        "price": "3000",
+        "itemTotal": "853"
+      },
+      {
+        "itemName": "Android App",
+        "quantity": "1",
+        "price": "3000",
+        "itemTotal": "8984"
+      }
+    ],
+    "clientCountry": "Canada",
+    "clientCity": "Toronto",
+    "clientStreetName": "King Street",
+    "clientStreetNumber": "456",
+    "totalPrice": "8,543.96"
+
+  },
+  {
+    "id": "WK3080",
+    "invoiceName": "SEO Optimization",
+    "invoiceDate": "2025-04-15",
+    "paymentDate": "2025-04-30",
+    "clientName": "Gamma LLC",
+    "clientEmail": "contact@gammallc.com",
+    "status": "Draft",
+    "items": [
+      {
+        "itemName": "Initial Audit",
+        "quantity": "1",
+        "price": "400",
+        "itemTotal": "233"
+      },
+      {
+        "itemName": "Monthly Maintenance",
+        "quantity": "3",
+        "price": "250",
+        "itemTotal": "853"
+      }
+    ],
+    "clientCountry": "UK",
+    "clientCity": "London",
+    "clientStreetName": "Oxford Street",
+    "clientStreetNumber": "789",
+    "totalPrice": "5,543.96"
+  }
+]

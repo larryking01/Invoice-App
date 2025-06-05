@@ -21,7 +21,7 @@
     "strictInputAccessModifiers": true,
     "typeCheckHostBindings": true,
     "strictTemplates": true,
-    "controlFlow": true,
+    "controlFlow": true,   // include in readme
   },
   "files": [],
   "references": [

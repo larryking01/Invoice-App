@@ -6,18 +6,24 @@
         <header class="header">
             <div class="invoice-status">
                 <h3>Invoices</h3>
-                <p>No invoices</p>
+                @if( numberOfInvoices === 0 ) {
+                    <p>No invoices</p>
+                }
+                @else {
+                    <p>There are {{ numberOfInvoices }} total invoices</p>
+                }
             </div>
 
             <article class="select-options-article">
                 <div class="select-options">
-                    <select>
-                        <option value="0">Filter by status</option>
-                        <option value="1">Filter by price</option>
+                    <select class="select-box">
+                        <option value="0">Draft</option>
+                        <option value="1">Pending</option>
+                        <option value="2">Paid</option>
                     </select>
                 </div>
 
-                <div class="new-invoice-button">
+                <div class="new-invoice-button" (click)="invoiceService.createInvoice(new_invoice)">
                     <div class="btn-icon-plus-div">
                         <img src="../../../assets/icon-plus.svg" alt="icon-plus" class="btn-icon-plus">
                     </div>
@@ -27,35 +33,32 @@
         </header>
 
 
-        @if( showInvoices ) {
-            <div class="display-invoices">
-                <div class="invoice-card">
-                    <p class="invoice-id">#RT3080</p>
-                    <p class="date">Due 19 Aug 2021</p>
-                    <p class="name">Jensen Huang</p>
-                    <p class="price">1, 800.90</p>
-                    <p class="status">Paid</p>
-                    <img src="../../../assets/icon-arrow-right.svg" alt="arrow-right" class="icon-right">
+        <div class="display-invoices">
+            @if( invoicesArray.length > 0 ) {
+                @for( invoice of invoicesArray; track invoice.id ) {
+                        <div class="invoice-card">
+                            <p class="invoice-id"><span class="invoice-item-id">#</span>{{ invoice.id }}</p>
+                            <p class="date">Due {{ invoice.paymentDate }}</p>
+                            <p class="name">{{ invoice.clientName }}</p>
+                            <p class="price">{{ invoice.totalPrice }}</p>
+                            <p class="status">{{ invoice.status }}</p>
+                            <img src="../../../assets/icon-arrow-right.svg" 
+                                alt="arrow-right" 
+                                class="icon-right"
+                                (click)="navigateToInvoiceDetails( invoice.id )"
+                                >
+                        </div>
+                }
+            }
+            @else {
+                <div class="no-invoice">
+                    <img src="../../../assets/illustration-empty.svg" class="illustration-empty" alt="empty">
+                    <h3 class="nothing-here">There is nothing here</h3>
+                    <h3 class="create-invoice-text">Create an invoice by checking the New Invoice button and get started</h3>
                 </div>
+            }
+        </div>
 
-                <div class="invoice-card">
-                    <p class="invoice-id">#RT3080</p>
-                    <p class="date">Due 19 Aug 2021</p>
-                    <p class="name">Jensen Huang</p>
-                    <p class="price">1, 800.90</p>
-                    <p class="status">Paid</p>
-                    <img src="../../../assets/icon-arrow-right.svg" alt="arrow-right" class="icon-right">
-                </div>
-
-            </div>
-        }
-        @else {
-            <div class="no-invoice">
-                <img src="../../../assets/illustration-empty.svg" class="illustration-empty" alt="empty">
-                <h3 class="nothing-here">There is nothing here</h3>
-                <h3 class="create-invoice-text">Create an invoice by checking the New Invoice button and get started</h3>
-            </div>
-        }
 
     </div>
     
