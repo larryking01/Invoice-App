@@ -18,7 +18,7 @@ export class InvoiceListComponent implements OnInit {
   invoiceService = inject( InvoiceService );
   // showInvoices: boolean = true;
   invoicesArray: InvoiceInterface[] = [];
-  numberOfInvoices: number = 0;
+  // numberOfInvoices: number = 0;
 
 
   ngOnInit(): void {
@@ -47,22 +47,22 @@ export class InvoiceListComponent implements OnInit {
     items: [
       {
         itemName: "Landing Page Design",
-        quantity: "2",
-        price: "500",
-        itemTotal: "345"
+        quantity: 4,
+        price: 500,
+        itemTotal: 345
       },
       {
         itemName: "Logo Design",
-        quantity: "1",
-        price: "200",
-        itemTotal: "123"
+        quantity: 3,
+        price: 200,
+        itemTotal: 123
       }
     ],
     clientCountry: "USA",
     clientCity: "New York",
     clientStreetName: "Broadway",
     clientStreetNumber: "123",
-    totalPrice: "3543.96"
+    totalPrice: 3543.96
 };
 
 

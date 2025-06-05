@@ -6,11 +6,11 @@
         <header class="header">
             <div class="invoice-status">
                 <h3>Invoices</h3>
-                @if( numberOfInvoices === 0 ) {
+                @if( invoicesArray.length === 0 ) {
                     <p>No invoices</p>
                 }
                 @else {
-                    <p>There are {{ numberOfInvoices }} total invoices</p>
+                    <p>There are {{ invoicesArray.length }} total invoices</p>
                 }
             </div>
 

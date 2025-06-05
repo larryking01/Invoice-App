@@ -76,8 +76,8 @@
                         <div class="table-row">
                             <h3>{{ invoice.itemName }}</h3>
                             <p>{{ invoice.quantity }}</p>
-                            <p>{{ invoice.price }}</p>
-                            <h3>{{ invoice.itemTotal }}</h3>
+                            <p>{{ invoice.price | currency:'GBP':'symbol':'1.2-2' }}</p>
+                            <h3>{{ (invoice.price * invoice.quantity) | currency:'GBP':'symbol':'1.2-2' }} </h3>
                         </div>
                     }
                     @empty {
@@ -88,7 +88,7 @@
                 @if( selectedInvoice ) {
                     <div class="amount-payable">
                         <p>Amount Due</p>
-                        <h3>$235.00</h3>
+                        <h3>{{ invoicesGrandTotal | currency:'GBP':'symbol':'1.2-2'}}</h3>
                     </div>
                 }
                 @else {

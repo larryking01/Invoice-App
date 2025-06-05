@@ -7,9 +7,9 @@ export enum InvoiceStatus {
 
 export interface InvoiceItem {
     itemName: string,
-    quantity: string,
-    price: string,
-    itemTotal: string
+    quantity: number,
+    price: number,
+    itemTotal: number
 }
 
 
@@ -28,6 +28,6 @@ export interface InvoiceInterface {
     clientCity?: string,
     clientStreetName?: string,
     clientStreetNumber?: string
-    totalPrice: string
+    totalPrice: number
 }
 
