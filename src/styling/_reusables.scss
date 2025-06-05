@@ -13,10 +13,14 @@ $dark-charcoal: #141625;
 $medium-purple: #9277FF;
 $space-grey: #373B53;
 $white: #ffffff;
-$yellow: #FF8F00;
+$amber-orange: #FF8F00;
 $snow-tint: #F9FAFE;
 $slate-indigo: #48549F;
-
+$vibrant-teal: #33D69F;
+$neutral-gray: #979797;
+$soft-lime: #E0FFD2;
+$pale-butter: #FFFFAD;
+$icy-lilac:#EDEDFF;
 
 
 
@@ -67,4 +71,12 @@ $slate-indigo: #48549F;
 @mixin display-flex-column {
     display: flex;
     flex-direction: column;
+}
+
+
+@mixin status-button-defaults {
+    width: 6.5rem;
+    height: 2.5rem;
+    border-radius: 0.375rem;
+    align-self: center;
 }

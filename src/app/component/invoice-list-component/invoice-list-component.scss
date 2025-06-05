@@ -114,6 +114,35 @@
         font-weight: bold;
     }
 
+    .paid {
+        @include status-button-defaults;
+        color: $vibrant-teal;
+        background-color: $soft-lime;
+        @include display-flex-row;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .draft {
+        @include status-button-defaults;
+        color: $space-grey;
+        background-color: $icy-lilac;
+        @include display-flex-row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .pending {
+        @include status-button-defaults;
+        color: $amber-orange;
+        background-color: $pale-butter;
+        @include display-flex-row;
+        justify-content: center;
+        align-items: center;
+    }
+
+
     .icon-right {
         width: 0.4rem;
         height: 0.7rem;

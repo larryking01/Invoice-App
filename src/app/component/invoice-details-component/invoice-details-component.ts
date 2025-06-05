@@ -56,7 +56,7 @@ export class InvoiceDetailsComponent implements OnInit {
     totalPrice: 3543.96
   };
 
-    updated_invoice: InvoiceInterface = {
+  updated_invoice: InvoiceInterface = {
       id: "VFG534",
       invoiceName: "Website Design",
       invoiceDate: "2025-06-01",
@@ -106,7 +106,7 @@ export class InvoiceDetailsComponent implements OnInit {
     this.invoiceService.updateInvoice( currentInvoice, updatedInvoice )
     this.selectedInvoiceID = this.activeRoute.snapshot.paramMap.get('id')!
     this.selectedInvoice = this.invoiceService.fetchTargetInvoice( this.selectedInvoiceID as string );
-    
+
   }
 
   calculateGrandInvoiceTotal(invoice: InvoiceInterface | undefined ) {
@@ -124,6 +124,17 @@ export class InvoiceDetailsComponent implements OnInit {
 
   goBackNavigation() {
     this.location.back()
+  }
+
+
+  navigateToEditInvoice(invoiceID: string) {
+    this.router.navigate([
+      {
+        outlets: {
+          modal: ['invoices', invoiceID, 'edit']
+        }
+      }
+    ])
   }
 
 }

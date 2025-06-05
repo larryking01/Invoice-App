@@ -1,6 +1,8 @@
 @use '../../../styling/reusables' as *;
 
 
+
+
 .nav-bar {
     @include display-flex-column;
     height: 100%;
@@ -9,7 +11,7 @@
     border-bottom-right-radius: 1.25rem;
 
     .logo {
-        background-color: $lavender-indigo;
+        background-image: url('../../../assets/logoBackground.png');
         height: 6.438rem;
         width: 6.438rem;
         padding: 2rem;

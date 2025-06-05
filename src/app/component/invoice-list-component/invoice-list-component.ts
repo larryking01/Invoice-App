@@ -1,15 +1,16 @@
 import { Component, inject, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Sidebar } from '../sidebar/sidebar';
 // import { RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
 import { InvoiceService } from '../../services/invoice-service';
 import { InvoiceInterface } from '../../shared/invoiceInterface';
 import { InvoiceStatus } from '../../shared/invoiceInterface';
-
+import { PrependDotPipe } from '../../pipes/prepend-dot-pipe';
 
 @Component({
   selector: 'invoice-list-component',
-  imports: [ Sidebar ],
+  imports: [ CommonModule, Sidebar,PrependDotPipe ],
   templateUrl: './invoice-list-component.html',
   styleUrl: './invoice-list-component.scss'
 })
@@ -30,7 +31,17 @@ export class InvoiceListComponent implements OnInit {
   }
 
   navigateToInvoiceDetails(invoiceID: string) {
-    this.router.navigate(['/invoices', invoiceID])
+    this.router.navigate(['invoices', invoiceID])
+  }
+
+  navigateToNewInvoice() {
+    this.router.navigate([
+      {
+        outlets:{
+          modal: ['invoices', 'new']
+        }
+      }
+    ])
   }
 
 

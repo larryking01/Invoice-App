@@ -23,7 +23,7 @@
                     </select>
                 </div>
 
-                <div class="new-invoice-button" (click)="invoiceService.createInvoice(new_invoice)">
+                <div class="new-invoice-button" (click)="navigateToNewInvoice()">
                     <div class="btn-icon-plus-div">
                         <img src="../../../assets/icon-plus.svg" alt="icon-plus" class="btn-icon-plus">
                     </div>
@@ -41,7 +41,13 @@
                             <p class="date">Due {{ invoice.paymentDate }}</p>
                             <p class="name">{{ invoice.clientName }}</p>
                             <p class="price">{{ invoice.totalPrice }}</p>
-                            <p class="status">{{ invoice.status }}</p>
+                            <p [ngClass]="{
+                                'paid': invoice.status === 'Paid',
+                                'pending': invoice.status === 'Pending',
+                                'draft': invoice.status === 'Draft'
+                            }">
+                                {{ invoice.status | prependDot }}
+                            </p>
                             <img src="../../../assets/icon-arrow-right.svg" 
                                 alt="arrow-right" 
                                 class="icon-right"

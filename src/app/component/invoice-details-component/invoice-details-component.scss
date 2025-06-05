@@ -70,8 +70,8 @@
 
     .current-status {
         width: 6.5rem;
-        background-color: color.adjust($yellow, $lightness: 40%);
-        color: $yellow;
+        background-color: color.adjust($amber-orange, $lightness: 40%);
+        color: $white;
         border-radius: 0.675rem;
         padding: 0.875rem;
         text-align: center;
@@ -84,7 +84,7 @@
         color: $cool-gray;
         padding: 1rem;
         border-radius: 0.675rem;
-
+        cursor: pointer;
     }
 
     .delete {
@@ -95,6 +95,7 @@
         padding: 1rem;
         border-radius: 1.5rem;
         text-align: center;
+        cursor: pointer;
     }
 
     .mark-as-paid {
@@ -106,6 +107,7 @@
         border-radius: 0.675rem;
         text-align: center;
         border-radius: 1.5rem;
+        cursor: pointer;
     }
 
 
