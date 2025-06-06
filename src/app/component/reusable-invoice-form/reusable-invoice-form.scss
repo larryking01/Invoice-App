@@ -1,0 +1,23 @@
+@use '../../../styling/reusables' as *;
+
+
+.reusable-inv-form-container {
+    @include reusable-form-flex-style;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: $lavender-mist;
+    border-top-right-radius: 1.25rem;
+    border-bottom-right-radius: 1.25rem;
+
+
+    .reusable-form-content {
+        padding: 3.5rem 3.5rem 0 3.5rem;
+    }
+
+    .form-role-text {
+        @include h2-spartan-bold();
+        margin-bottom: 3rem;
+    }
+
+}
