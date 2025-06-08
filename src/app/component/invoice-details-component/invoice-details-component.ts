@@ -25,87 +25,12 @@ export class InvoiceDetailsComponent implements OnInit {
   invoicesGrandTotal: number = 0;
 
 
-  current_invoice: InvoiceInterface = {
-    id: "VFG534",
-    invoiceDate: "2025-06-01",
-    paymentTerms: "2025-06-10",
-    clientName: "Acme Corp",
-    clientEmail: "client@acme.com",
-    clientPostCode: "tu%",
-    fromStreetAddress: "K143 Adenta",
-    fromCity: "London",
-    fromCountry: "Spain",
-    fromPostCode: "AC312",
-    projectDescription: 'Marketing',
-    status: InvoiceStatus.draft,
-    items: [
-      {
-        itemName: "Landing Page Design",
-        quantity: 4,
-        price: 500,
-        itemTotal: 345
-      },
-      {
-        itemName: "Logo Design",
-        quantity: 3,
-        price: 200,
-        itemTotal: 123
-      }
-    ],
-    clientCountry: "USA",
-    clientCity: "New York",
-    clientStreetAddress: "Broadway",
-    // totalPrice: 3543.96
-  };
-
-
-  updated_invoice: InvoiceInterface = {
-    id: "GHANA12214",
-    invoiceDate: "2025-06-01",
-    paymentTerms: "2025-06-10",
-    clientName: "Acme Corp",
-    clientEmail: "client@acme.com",
-    clientPostCode: "tu%",
-    fromStreetAddress: "K143 Adenta",
-    fromCity: "London",
-    fromCountry: "Spain",
-    fromPostCode: "AC312",
-    projectDescription: 'Marketing',
-    status: InvoiceStatus.draft,
-    items: [
-      {
-        itemName: "Landing Page Design",
-        quantity: 4,
-        price: 500,
-        itemTotal: 345
-      },
-      {
-        itemName: "Logo Design",
-        quantity: 3,
-        price: 200,
-        itemTotal: 123
-      }
-    ],
-    clientCountry: "USA",
-    clientCity: "New York",
-    clientStreetAddress: "Broadway",
-    // totalPrice: 3543.96
-  };
-  
-
   ngOnInit(): void {
     this.selectedInvoiceID = this.activeRoute.snapshot.paramMap.get('id')!
-    // console.log(`selected route id = ${ this.selectedInvoiceID }`)
-
     this.selectedInvoice = this.invoiceService.fetchTargetInvoice( this.selectedInvoiceID as string );
-    // console.log('selected invoice = ', this.selectedInvoice )
-    // console.log('selected invoice id = ', this.selectedInvoice?.id )
-
-    // this.calculateTotalInvoicePrice( this.selectedInvoice );
     this.invoicesGrandTotal = this.calculateGrandInvoiceTotal( this.selectedInvoice )
 
   }
-
 
   updateSelectedInvoice(currentInvoice: InvoiceInterface, updatedInvoice: InvoiceInterface) {
     this.invoiceService.updateInvoice( currentInvoice, updatedInvoice )

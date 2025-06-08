@@ -27,17 +27,9 @@ export class EditInvoiceFormComponent implements OnInit {
     }
   }
 
-
-  getCurrentInvoice( current_invoice: any ) {
-    this.currentInvoice = current_invoice
-  }
-
-  getUpdatedInvoice( updated_invoice: any ) {
-    this.updatedInvoice = updated_invoice
-  }
-
-  editInvoice( current_invoice:any, updated_invoice:any ) {
-    this.invoiceService.updateInvoice( current_invoice, updated_invoice)
+  editInvoice( event: { original: InvoiceInterface, updated: InvoiceInterface} ) {
+    this.invoiceService.updateInvoice( event.original, event.updated )
+    // this.invoiceService.fetchInvoices()
   }
 
 }

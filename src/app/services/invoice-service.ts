@@ -11,7 +11,8 @@ import { BehaviorSubject } from 'rxjs';
 export class InvoiceService {
   allInvoicesArray = new BehaviorSubject<InvoiceInterface[]>([])
   allInvoicesArray$ = this.allInvoicesArray.asObservable()
-  
+  selected_invoice: any = '';
+
   httpClient = inject( HttpClient )
 
   constructor() { }
@@ -25,8 +26,8 @@ export class InvoiceService {
 
   
   updateInvoice(currentInvoice: InvoiceInterface, updatedInvoice: InvoiceInterface) {
-    console.log("current invoice = ", currentInvoice );
-    console.log("updated invoice = ", updatedInvoice );
+    console.log("invoice service current invoice = ", currentInvoice );
+    console.log("invoice service updated invoice = ", updatedInvoice );
     let currentInvoices = this.allInvoicesArray.getValue()
     let invoiceToUpdateIndex = currentInvoices.findIndex( invItem => invItem.id === currentInvoice.id );
     console.log("id of invoice to update = ", invoiceToUpdateIndex )
@@ -42,7 +43,7 @@ export class InvoiceService {
     storedInvoices.subscribe({
       next: ( data ) => {
         this.allInvoicesArray.next( data );
-        // console.log("all invoices array = ", this.allInvoicesArray)
+        console.log("fetch all invoices service all invoices array = ", this.allInvoicesArray)
       },
       error: ( err ) => {
         console.error('failed to fetch invoice data: ', err)

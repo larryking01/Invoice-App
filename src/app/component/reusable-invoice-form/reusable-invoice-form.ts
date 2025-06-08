@@ -15,7 +15,7 @@ import { InvoiceInterface } from '../../shared/invoiceInterface';
 export class ReusableInvoiceForm implements OnInit, OnChanges {
   @Input() invoiceToEditDetail: InvoiceInterface | undefined = undefined;
   @Output() newInvoice = new EventEmitter<any>();
-  @Output() updatedInvoice = new EventEmitter<any>();
+  @Output() invoiceUpdated = new EventEmitter<{original: InvoiceInterface, updated: InvoiceInterface}>();
   @Output() formSubmitType = new EventEmitter<string>()
 
   formBuilder = inject( FormBuilder )
@@ -140,8 +140,12 @@ export class ReusableInvoiceForm implements OnInit, OnChanges {
     if (this.invoiceForm.valid) {
       if( this.invoiceToEditDetail ) {
         console.log('edit')
-        this.newInvoice.emit(this.invoiceToEditDetail)
-        this.updatedInvoice.emit(this.invoiceForm.value)
+        console.log("edit: new invoice = ", this.invoiceToEditDetail)
+        console.log("edit: updated invoice = ", this.invoiceForm.value)
+        this.invoiceUpdated.emit({
+          original: this.invoiceToEditDetail,
+          updated: this.invoiceForm.getRawValue() as InvoiceInterface
+        })
       }
       else {
         const invoiceData = this.invoiceForm.getRawValue();
