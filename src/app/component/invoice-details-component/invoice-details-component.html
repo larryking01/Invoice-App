@@ -1,104 +1,125 @@
 <section class="invoice-details-container">
     <sidebar></sidebar>
 
-    <div class="inv-details-content">
-        <main class="main-content">
-            <div class="go-back" (click)="goBackNavigation()">
-                <img src="../../../assets/icon-arrow-left.svg" alt="go-back-icon" class="go-back-icon">
-                <h3 class="go-back-txt">Go back</h3>
-            </div>
-
-            <div class="target-invoice-card">
-                <div class="status-type">
-                    <p class="status-text">Status</p>
-                    <p class="current-status">{{ selectedInvoice?.status }}</p>
+    <div [class]="{'blurred':showDeleteModal, 'inv-details-content': true}">
+        <article *ngIf="selectedInvoice$ | async as selectedInvoice">
+            <main class="main-content">
+                <div class="go-back" (click)="goBackNavigation()">
+                    <img src="../../../assets/icon-arrow-left.svg" alt="go-back-icon" class="go-back-icon">
+                    <h3 class="go-back-txt">Go back</h3>
                 </div>
 
-                <div class="action-btns">
-                    <div class="edit" (click)="navigateToEditInvoice( selectedInvoice!.id )">Edit</div>
-                    <div class="delete">Delete</div>
-                    <div class="mark-as-paid">Mark as Paid</div>
-                </div>
-            </div>
-
-            <div class="target-invoice-details">
-                <div class="invoice-intro">
-                    <div class="invoice-id-and-name">
-                        <h3>{{ selectedInvoice?.id }}</h3>
-                        <p>{{ selectedInvoice?.projectDescription }}</p>
+                <div class="target-invoice-card">
+                    <div class="status-type">
+                        <p class="status-text">Status</p>
+                            <p [ngClass]="{
+                                'paid': selectedInvoice.status === 'Paid',
+                                'pending': selectedInvoice.status === 'Pending',
+                                'draft': selectedInvoice.status === 'Draft'
+                            }">
+                            {{ selectedInvoice.status | prependDot }}</p>
                     </div>
 
-                    <div class="invoice-location">
-                        <p>{{ selectedInvoice?.clientEmail }}</p>
-                        <p>{{ selectedInvoice?.clientEmail }}</p>
-                        <p>{{ selectedInvoice?.clientEmail }}</p>
-                        <p>{{ selectedInvoice?.clientCountry }}</p>
+                    <div class="action-btns" *ngIf="selectedInvoice$ | async as invoice">
+                        <div class="edit" (click)="navigateToEditInvoice( selectedInvoice.id )">Edit</div>
+                        <div class="delete"(click)="showDeleteModalTrue()">Delete</div>
+                        <div class="mark-as-paid">Mark as Paid</div>
                     </div>
                 </div>
 
-                <div class="billing-info">
-                    <div class="billing-dates">
-                        <div class="invoice-date">
-                            <p>Invoice Date</p>
-                            <h3>{{ selectedInvoice?.invoiceDate }}</h3>
+                <div class="target-invoice-details">
+                    <div class="invoice-intro">
+                        <div class="invoice-id-and-name">
+                            <h3><span>#</span>{{ selectedInvoice?.id }}</h3>
+                            <p>{{ selectedInvoice?.projectDescription }}</p>
                         </div>
 
-                        <div class="payment-date">
-                            <p>Payment Date</p>
-                            <h3>{{ selectedInvoice?.paymentTerms }}</h3>
+                        <div class="invoice-location">
+                            <p>{{ selectedInvoice.fromStreetAddress }}</p>
+                            <p>{{ selectedInvoice.fromCity }}</p>
+                            <p>{{ selectedInvoice.fromPostCode }}</p>
+                            <p>{{ selectedInvoice.fromCountry }}</p>
                         </div>
                     </div>
 
-                    <div class="bill-to">
-                        <p>Bill To</p>
-                        <h3>{{ selectedInvoice?.clientName }}</h3>
-                        <p>{{ selectedInvoice?.clientPostCode }}</p>
-                        <p>{{ selectedInvoice?.clientPostCode }}</p>
-                        <p>{{ selectedInvoice?.clientPostCode }}</p>
-                        <p>{{ selectedInvoice?.clientCountry }}</p>
+                    <div class="billing-info">
+                        <div class="billing-dates">
+                            <div class="invoice-date">
+                                <p>Invoice Date</p>
+                                <h3>{{ selectedInvoice.invoiceDate }}</h3>
+                            </div>
+
+                            <div class="payment-date">
+                                <p>Payment Date</p>
+                                <h3>{{ selectedInvoice.paymentTerms }}</h3>
+                            </div>
+                        </div>
+
+                        <div class="bill-to">
+                            <p>Bill To</p>
+                            <h3>{{ selectedInvoice.clientName }}</h3>
+                            <p>{{ selectedInvoice.clientStreetAddress }}</p>
+                            <p>{{ selectedInvoice.clientCity }}</p>
+                            <p>{{ selectedInvoice.clientPostCode }}</p>
+                            <p>{{ selectedInvoice.clientCountry }}</p>
+                        </div>
+
+                        <div class="Sent to">
+                            <p>Sent to</p>
+                            <h3>{{ selectedInvoice.clientEmail }}</h3>
+                        </div>
                     </div>
 
-                    <div class="Sent to">
-                        <p>Sent to</p>
-                        <h3>{{ selectedInvoice?.clientEmail }}</h3>
-                    </div>
-                </div>
+                    <div class="item-display-table">
+                        <div class="table-header">
+                            <p>Item Name</p>
+                            <p>QTY.</p>
+                            <p>Price</p>
+                            <p>Total</p>
+                        </div>
 
-                <div class="item-display-table">
-                    <div class="table-header">
-                        <p>Item Name</p>
-                        <p>QTY.</p>
-                        <p>Price</p>
-                        <p>Total</p>
+                        @for( invoice of selectedInvoice.items; track invoice.itemName ) {
+                            <div class="table-row">
+                                <h3>{{ invoice.itemName }}</h3>
+                                <p>{{ invoice.quantity }}</p>
+                                <p>{{ invoice.price | currency:'GBP':'symbol':'1.2-2' }}</p>
+                                <h4>{{ (invoice.price * invoice.quantity) | currency:'GBP':'symbol':'1.2-2' }} </h4>
+                            </div>
+                        }
+                        @empty {
+                            <p>There are no items to display</p>
+                        }
                     </div>
 
-                    @for( invoice of selectedInvoice?.items; track invoice.itemName ) {
-                        <div class="table-row">
-                            <h3>{{ invoice.itemName }}</h3>
-                            <p>{{ invoice.quantity }}</p>
-                            <p>{{ invoice.price | currency:'GBP':'symbol':'1.2-2' }}</p>
-                            <h3>{{ (invoice.price * invoice.quantity) | currency:'GBP':'symbol':'1.2-2' }} </h3>
+                    @if( selectedInvoice ) {
+                        <div class="amount-payable">
+                            <p>Amount Due</p>
+                            <h3>{{ invoicesGrandTotal | currency:'GBP':'symbol':'1.2-2'}}</h3>
                         </div>
                     }
-                    @empty {
-                        <p>There are no items to display</p>
+                    @else {
+                        <div>{{ null }}</div>
                     }
                 </div>
+            </main>
 
-                @if( selectedInvoice ) {
-                    <div class="amount-payable">
-                        <p>Amount Due</p>
-                        <h3>{{ invoicesGrandTotal | currency:'GBP':'symbol':'1.2-2'}}</h3>
+            <div *ngIf="showDeleteModal === true">
+                <div class="show-delete-modal">
+                    <h3 class="confirm-deletion-header">Confirm Deletion</h3>
+                    <p class="delete-warning">
+                        Are you sure you want to delete invoice {{ selectedInvoice.id }}? 
+                        This action cannot be undone.
+                    </p>
+                    <div class="delete-modal-action-buttons">
+                        <div class="edit" type="button" (click)="hideDeleteModal()">Cancel</div>
+                        <div class="delete" type="button" (click)="deleteInvoice( selectedInvoice )">Delete</div>
                     </div>
-                }
-                @else {
-                    <div>{{ null }}</div>
-                }
+                </div>
             </div>
+        </article>
 
 
 
-        </main>
     </div>
 
 </section>

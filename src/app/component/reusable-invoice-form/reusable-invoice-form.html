@@ -77,10 +77,10 @@
                 <div class="full-width">
                     <label for="paymentTerms">Payment Terms</label>
                     <select formControlName="paymentTerms" class="half-width-input">
-                        <option value="0">Net 1 Day</option>
-                        <option value="1">Net 7 Days</option>
-                        <option value="2">Net 14 Days</option>
-                        <option value="3">Net 30 Days</option>
+                        <option value="Net 1 Day">Net 1 Day</option>
+                        <option value="Net 7 Days">Net 7 Days</option>
+                        <option value="Net 14 Days">Net 14 Days</option>
+                        <option value="Net 30 Days"></option>
                     </select>
                 </div>
             </div>
@@ -116,6 +116,10 @@
                 <div (click)="addItem()" class="add-invoice-item"><span class="add-invoice-item-span">+ Add New Item</span></div>
             </div>
 
+            <!--validation error here-->
+            <div *ngIf="invoiceForm.invalid && invoiceForm.touched" class="form-error">
+                All fields are required.
+            </div>
 
             <div class="action-buttons-div">
                 @if( invoiceToEditDetail ) {

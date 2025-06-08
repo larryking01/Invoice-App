@@ -29,7 +29,7 @@ export class EditInvoiceFormComponent implements OnInit {
 
   editInvoice( event: { original: InvoiceInterface, updated: InvoiceInterface} ) {
     this.invoiceService.updateInvoice( event.original, event.updated )
-    // this.invoiceService.fetchInvoices()
+    // this.invoiceService.fetchTargetInvoice()
   }
 
 }

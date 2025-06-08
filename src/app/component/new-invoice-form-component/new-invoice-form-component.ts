@@ -24,7 +24,11 @@ export class NewInvoiceFormComponent {
       let invoiceToAdd: InvoiceInterface = {
         ...newInvoice,
         id: this.invoiceService.generateInvoiceId(),
-        status: InvoiceStatus.pending
+        status: InvoiceStatus.pending,
+        items: newInvoice.items.map( item => ({
+          ...item,
+          id: this.invoiceService.generateInvoiceId()
+        }))
       }
 
       this.invoiceService.createInvoice( invoiceToAdd );

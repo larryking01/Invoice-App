@@ -6,20 +6,21 @@
         <header class="header">
             <div class="invoice-status">
                 <h3>Invoices</h3>
-                @if( invoicesArray.length === 0 ) {
+                @if( filterableInvoicesArray.length === 0 ) {
                     <p>No invoices</p>
                 }
                 @else {
-                    <p>There are {{ invoicesArray.length }} total invoices</p>
+                    <p>There are {{ filterableInvoicesArray.length }} total invoices</p>
                 }
             </div>
 
             <article class="select-options-article">
                 <div class="select-options">
-                    <select class="select-box">
-                        <option value="0">Draft</option>
-                        <option value="1">Pending</option>
-                        <option value="2">Paid</option>
+                    <select class="select-box" [(ngModel)]="listFilter" (ngModelChange)="handleFiltering($event)">
+                        <option value="0">Filter by status</option>
+                        <option value="1">Draft</option>
+                        <option value="2">Pending</option>
+                        <option value="3">Paid</option>
                     </select>
                 </div>
 
@@ -34,20 +35,20 @@
 
 
         <div class="display-invoices">
-            @if( invoicesArray.length > 0 ) {
-                @for( invoice of invoicesArray; track invoice.id ) {
+            @if( filterableInvoicesArray.length > 0 ) {
+                @for( invoice of filterableInvoicesArray; track invoice.id ) {
                         <div class="invoice-card">
-                            <p class="invoice-id"><span class="invoice-item-id">#</span>{{ invoice.id }}</p>
-                            <p class="date">Due {{ invoice.paymentTerms }}</p>
+                            <h4 class="invoice-id"><span class="invoice-item-id">#</span>{{ invoice.id }}</h4>
+                            <p class="date">Due {{ invoice.invoiceDate }}</p>
                             <p class="name">{{ invoice.clientName }}</p>
-                            <p class="price">{{ invoice.clientCity }}</p>
-                            <p [ngClass]="{
+                            <h3 class="price">{{ invoice.clientCity }}</h3>
+                            <h5 [ngClass]="{
                                 'paid': invoice.status === 'Paid',
                                 'pending': invoice.status === 'Pending',
                                 'draft': invoice.status === 'Draft'
                             }">
                                 {{ invoice.status | prependDot }}
-                            </p>
+                        </h5>
                             <img src="../../../assets/icon-arrow-right.svg" 
                                 alt="arrow-right" 
                                 class="icon-right"

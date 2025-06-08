@@ -1,5 +1,6 @@
-import { Component, inject, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
-import { ReactiveFormsModule, FormBuilder, FormArray, FormGroup } from '@angular/forms';
+import { Component, inject, OnInit, Input, Output, EventEmitter, 
+         OnChanges, SimpleChanges } from '@angular/core';
+import { ReactiveFormsModule, FormBuilder, FormArray, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Location } from '@angular/common';
 import { Sidebar } from '../sidebar/sidebar';
@@ -25,19 +26,19 @@ export class ReusableInvoiceForm implements OnInit, OnChanges {
   ngOnInit(): void {
     console.log("invoice to edit = ", this.invoiceToEditDetail )
     this.invoiceForm = this.formBuilder.group({
-      fromStreetAddress: [''],
-      fromCity: [''],
-      fromPostCode: [''],
-      fromCountry: [''],
-      clientName:[''],
-      clientEmail: [''],
-      clientStreetAddress: [''],
-      clientCity: [''],
-      clientPostCode: [''],
-      clientCountry: [''],
-      invoiceDate: [''],
-      paymentTerms: ['0'],
-      projectDescription: [''],
+      fromStreetAddress: ['', Validators.required],
+      fromCity: ['', Validators.required],
+      fromPostCode: ['', Validators.required],
+      fromCountry: ['', Validators.required],
+      clientName:['', Validators.required],
+      clientEmail: ['', [Validators.required, Validators.email]],
+      clientStreetAddress: ['', Validators.required],
+      clientCity: ['', Validators.required],
+      clientPostCode: ['', Validators.required],
+      clientCountry: ['', Validators.required],
+      invoiceDate: ['', Validators.required],
+      paymentTerms: ['Net 1 Day', Validators.required],
+      projectDescription: ['', Validators.required],
       items: this.formBuilder.array([ this.createInvoiceItem() ])  // start with a single invoice item
     })
 
@@ -93,10 +94,10 @@ export class ReusableInvoiceForm implements OnInit, OnChanges {
   // create a single invoice item
   createInvoiceItem(): FormGroup {
     let item = this.formBuilder.group({
-      itemName: [''],
-      quantity: [1],
-      price: [1],
-      total: [0],
+      itemName: ['', Validators.required],
+      quantity: [1, [Validators.required, Validators.min(1)]],
+      price: [1, [Validators.required, Validators.min(1)]],
+      total: [1],
     })
 
   this.subscribeToItemChanges(item);
@@ -142,10 +143,10 @@ export class ReusableInvoiceForm implements OnInit, OnChanges {
         console.log('edit')
         console.log("edit: new invoice = ", this.invoiceToEditDetail)
         console.log("edit: updated invoice = ", this.invoiceForm.value)
-        this.invoiceUpdated.emit({
-          original: this.invoiceToEditDetail,
-          updated: this.invoiceForm.getRawValue() as InvoiceInterface
-        })
+        // this.invoiceUpdated.emit({
+        //   original: this.invoiceToEditDetail,
+        //   updated: this.invoiceForm.getRawValue() as InvoiceInterface
+        // })
       }
       else {
         const invoiceData = this.invoiceForm.getRawValue();
