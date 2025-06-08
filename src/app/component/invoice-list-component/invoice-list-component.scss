@@ -21,6 +21,17 @@
     .invoice-status {
         @include display-flex-column;
         justify-content: space-between;
+
+
+        h3 {
+            @include h1-spartan-bold();
+        }
+
+        p {
+            @include body-1-spartan-medium();
+            color: $cool-gray;
+        }
+
     }
 
     .select-options-article {
@@ -34,6 +45,7 @@
         border: none;
         outline: none;
         cursor: pointer;
+        @include h3-spartan-bold();
     }
 
 
@@ -49,6 +61,12 @@
         align-items: center;
         color: $lavender-mist;
         padding: 1rem;
+
+
+        h4 {
+            @include h3-spartan-bold();
+            color: $white;
+        }
         
     }
     
@@ -72,7 +90,6 @@
     }
 
     .display-invoices {
-        // background-color: red;
         max-width: 45.625rem;
         margin: 4.5rem auto;
 
@@ -87,6 +104,28 @@
         margin-bottom: 1rem;
         border-radius: 0.5rem;
         box-shadow: 0px 10px 10px -10px rgba(0, 0, 0, 0.25);
+
+
+
+        h4 {
+            @include h3-spartan-bold();
+            width: 3.75rem;
+        }
+
+        p {
+            @include body-2-spartan-medium();
+            color: $cool-gray;
+            width: 6.6rem;
+        }
+
+        h3 {
+            @include h3-spartan-bold();
+            width: 5.6rem;
+        }
+
+        h5 {
+            width: 6.5rem;
+        }
     }
 
     .invoice-item-id {
@@ -113,6 +152,37 @@
         font-size: 1rem;
         font-weight: bold;
     }
+
+    .paid {
+        @include status-button-defaults;
+        @include status-button-defaults;
+        color: $vibrant-teal;
+        background-color: $soft-lime;
+        @include display-flex-row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .draft {
+        @include status-button-defaults;
+        @include status-button-defaults;
+        color: $space-grey;
+        background-color: $icy-lilac;
+        @include display-flex-row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .pending {
+        @include status-button-defaults;
+        @include status-button-defaults;
+        color: $amber-orange;
+        background-color: $pale-butter;
+        @include display-flex-row;
+        justify-content: center;
+        align-items: center;
+    }
+
 
     .icon-right {
         width: 0.4rem;

@@ -1,0 +1,144 @@
+<section class="reusable-invoice-form-container">
+    <sidebar></sidebar>
+
+    <div class="reusable-form-content">
+        @if( invoiceToEditDetail ) {
+            <p class="form-role-text">Edit <span>#</span>{{ invoiceToEditDetail.id }}</p>
+        }
+        @else {
+            <p class="form-role-text">New Invoice</p>
+        }
+
+        <form [formGroup]="invoiceForm" (ngSubmit)="onSubmit()">
+            <p class="bill">Bill From</p>
+
+            <div class="full-width">
+                <label for="street-address">Street Address</label>
+                <input id="street-address" type="text" formControlName="fromStreetAddress" class="full-width-input">
+            </div>
+
+            <div class="location">
+                <div class="full-width">
+                    <label for="city">City</label>
+                    <input id="city" type="text" formControlName="fromCity" class="third-width-input">
+                </div>
+
+                <div class="full-width">
+                    <label for="postCode">Post Code</label>
+                    <input type="text" formControlName="fromPostCode" class="third-width-input">
+                </div>
+
+                <div class="full-width">
+                    <label for="country">Country</label>
+                    <input type="text" formControlName="fromCountry" class="third-width-input">
+                </div>
+            </div>
+
+            <p class="bill">Bill To</p>
+                <div class="full-width">
+                    <label for="clientName">Client's Name</label>
+                    <input type="text" formControlName="clientName" class="full-width-input">
+                </div>
+
+                <div class="full-width">
+                    <label for="clientEmailAddress">Client's Email</label>
+                    <input type="text" formControlName="clientEmail" class="full-width-input">
+                </div>
+
+                <div class="full-width">
+                    <label for="clientStreetAddress">Street Address</label>
+                    <input type="text" formControlName="clientStreetAddress" class="full-width-input">
+                </div>
+
+
+            <div class="location">
+                <div class="full-width">
+                    <label for="clientCity">City</label>
+                    <input type="text" formControlName="clientCity" class="third-width-input">
+                </div>
+
+                <div class="full-width">
+                    <label for="clientPostCode">Post Code</label>
+                    <input type="text" formControlName="clientPostCode" class="third-width-input">
+                </div>
+
+                <div class="full-width">
+                    <label for="clientCountry">Country</label>
+                    <input type="text" formControlName="clientCountry" class="third-width-input">
+                </div>
+            </div>
+
+            <div class="invoice-date-and-payment">
+                <div class="full-width">
+                    <label for="invoiceDate">Invoice Date</label>
+                    <input type="date" formControlName="invoiceDate" class="half-width-input">
+                </div>
+
+                <div class="full-width">
+                    <label for="paymentTerms">Payment Terms</label>
+                    <select formControlName="paymentTerms" class="half-width-input">
+                        <option value="Net 1 Day">Net 1 Day</option>
+                        <option value="Net 7 Days">Net 7 Days</option>
+                        <option value="Net 14 Days">Net 14 Days</option>
+                        <option value="Net 30 Days"></option>
+                    </select>
+                </div>
+            </div>
+
+
+            <div class="full-width">
+                <label for="projectDescription">Project Description</label>
+                <input type="text" formControlName="projectDescription" class="full-width-input">
+            </div>
+
+            <div formArrayName="items">
+                <h3 class="item-list">Item List</h3>
+
+                <div class="invoice-item-header">
+                    <p class="item-name">Item Name</p>
+                    <p class="quantity">Qty.</p>
+                    <p class="price">Price</p>
+                    <p class="total">Total</p>
+                </div>
+
+                @for (item of items.controls; track $index; let i = $index) {
+                    <div class="invoice-items-div" [formGroupName]="i">
+                        <input type="text" formControlName="itemName" class="invoice-item-name" />
+                        <input type="number" formControlName="quantity" class="invoice-item-qty" />
+                        <input type="number" formControlName="price" class="invoice-item-price" />
+                        <!-- <input type="number" formControlName="total" class="invoice-item-total"/> -->
+                        <div class="invoice-item-total">{{ item.get('total')?.value | number:'1.2-2' }}</div>
+                        <img src='../../../assets/icon-delete.svg' 
+                             alt="icon-delete" class="icon-delete"
+                             (click)="removeItem(i)">
+                    </div>
+                }
+                <div (click)="addItem()" class="add-invoice-item"><span class="add-invoice-item-span">+ Add New Item</span></div>
+            </div>
+
+            <!--validation error here-->
+            <div *ngIf="invoiceForm.invalid && invoiceForm.touched" class="form-error">
+                All fields are required.
+            </div>
+
+            <div class="action-buttons-div">
+                @if( invoiceToEditDetail ) {
+                    <div class="edit-action-buttons">
+                        <button type="button" class="cancel-btn" (click)="goBackNavigation()">Cancel</button>
+                        <button type="submit" class="save-changes-btn">Save Changes</button>
+                    </div>
+                }
+                @else {
+                    <div class="new-action-buttons">
+                        <button type="button" class="cancel-btn" (click)="goBackNavigation()">Discard</button>
+
+                        <div class="save-action-btns">
+                            <button type="button" class="save-draft" (click)="submitAsDraft()">Save As Draft</button>
+                            <button type="submit" class="save-changes-btn">Save & Send</button>
+                        </div>
+                    </div>
+                }
+            </div>
+        </form>
+    </div>
+</section>

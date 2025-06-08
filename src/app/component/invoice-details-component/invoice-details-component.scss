@@ -17,12 +17,16 @@
         margin: 2rem auto;
     }
 
+    .blurred {
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
     .go-back {
         @include display-flex-row;
         justify-content: space-between;
-        width: 5.063rem;
-        height: 0.938rem;
-        margin-bottom: 2rem;
+        width: 5rem;
+        height: 1remrem;
+        margin-bottom: 1.5rem;
         cursor: pointer;
     }
 
@@ -33,22 +37,23 @@
         align-self: center;
         position: relative;
         top: 0.4rem;
+        @include h3-spartan-bold-small();
     }
 
     .go-back-icon {
-        width: 0.529rem;
-        height: 0.264rem;
+        width: 0.6rem;
+        height: 0.6rem;
         align-self: end;
     }
 
     .target-invoice-card {
         width: 100%;
-        // background-color: red;
+        // background-color: yellow;
         @include display-flex-row;
         justify-content: space-between;
-        padding: 1.5rem 2rem;
+        padding: 1.2rem 2rem;
         box-shadow: 0 0.625rem 0.625rem -0.625rem $slate-indigo;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.2rem;
     }
 
     .status-type {
@@ -66,12 +71,14 @@
 
     .status-text {
         align-self: center;
+        @include body-1-spartan-medium();
+        color: $status-color;
     }
 
     .current-status {
         width: 6.5rem;
-        background-color: color.adjust($yellow, $lightness: 40%);
-        color: $yellow;
+        background-color: color.adjust($amber-orange, $lightness: 40%);
+        color: $dark-charcoal;
         border-radius: 0.675rem;
         padding: 0.875rem;
         text-align: center;
@@ -84,7 +91,9 @@
         color: $cool-gray;
         padding: 1rem;
         border-radius: 0.675rem;
-
+        cursor: pointer;
+        @include h3-spartan-bold-small();
+        color: $status-color;
     }
 
     .delete {
@@ -95,6 +104,9 @@
         padding: 1rem;
         border-radius: 1.5rem;
         text-align: center;
+        cursor: pointer;
+        @include h3-spartan-bold-small();
+        color: $white;
     }
 
     .mark-as-paid {
@@ -106,12 +118,50 @@
         border-radius: 0.675rem;
         text-align: center;
         border-radius: 1.5rem;
+        cursor: pointer;
+        @include h3-spartan-bold-small();
+        color: $white;
+    }
+
+    span {
+        color: $cool-gray;
+    }
+
+    .paid {
+        @include status-button-defaults;
+        background-color: $soft-lime;
+        @include display-flex-row;
+        justify-content: center;
+        align-items: center;
+        @include h3-spartan-bold-small();
+        color: $vibrant-teal;
+    }
+
+    .draft {
+        @include status-button-defaults;
+        @include h3-spartan-bold-small();
+        color: $space-grey;
+        background-color: $icy-lilac;
+        @include display-flex-row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .pending {
+        @include status-button-defaults;
+        @include h3-spartan-bold-small();
+        color: $amber-orange;
+        background-color: $pale-butter;
+        @include display-flex-row;
+        justify-content: center;
+        align-items: center;
     }
 
 
     .target-invoice-details {
         width: 100%;
-        padding: 3rem;
+        padding: 1rem 3rem;
+        // background-color: green;
     }
 
     .invoice-intro {
@@ -126,6 +176,7 @@
         p {
             color: $cool-gray;
             margin-bottom: 0.2rem;
+            @include body-1-spartan-medium();
         }
     }
 
@@ -133,6 +184,7 @@
     .invoice-id-and-name {
         p {
             color:$cool-gray;
+            @include body-1-spartan-medium();
         }
 
         h3 {
@@ -148,10 +200,24 @@
         justify-content: space-between;
         margin-bottom: 2.8rem;
 
+
+        p {
+            margin-bottom: 0.4rem;
+            @include body-1-spartan-medium();
+            color:$cool-gray;
+        }
+
+        h3 {
+            margin-bottom: 0.6rem;
+            @include h3-spartan-bold();
+
+        }
+
     }
 
     .billing-dates {
         @include display-flex-column;
+        justify-content: space-between;
     }
 
     .payment-date {
@@ -161,7 +227,7 @@
 
     .item-display-table {
         background-color: $snow-tint;
-        padding: 2rem;
+        padding: 1.5rem;
 
     }
 
@@ -173,6 +239,7 @@
 
         p {
             color: $cool-gray;
+            @include body-1-spartan-medium();
         }
     }
 
@@ -181,13 +248,30 @@
         @include display-flex-row;
         justify-content: space-between;
         margin-bottom: 2rem;
+        height: 1rem;
+
+
+        p {
+            @include h3-spartan-bold();
+            color: $cool-gray;
+            width: 20%;
+        }
+
+        h3 {
+            @include h3-spartan-bold();
+            width: 35%;
+        }
+
+        h4 {
+            width: 10%;
+        }
     }
 
 
     .amount-payable {
         @include display-flex-row;
         justify-content: space-between;
-        height: 5rem;
+        height: 4rem;
         background-color: $space-grey;
         color: $white;
         padding: 0 2rem;
@@ -195,17 +279,48 @@
         border-bottom-left-radius: 0.5rem;
 
         p {
-            font-size: 0.688rem;
+            @include body-1-spartan-medium();
             align-self: center;
         }
 
         h3 {
-            font-size: 1.5rem;
+            @include h2-spartan-bold();
+            color: $white;
             align-self: center;
         }
 
     }
 
+
+    .show-delete-modal {
+        width: 30rem;
+        height: 15.5rem;
+        padding: 3rem;
+        background-color: $white;
+        border-radius: 0.5rem;
+        position: fixed;
+        top: 35%;
+        left: 35%;
+        z-index: 1000;
+    }
+
+    .confirm-deletion-header {
+        @include h2-spartan-bold();
+        width: 13.4rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .delete-warning {
+        @include body-1-spartan-medium();
+        color: $cool-gray;
+        margin-bottom: 1rem;
+    }
+
+    .delete-modal-action-buttons {
+        @include display-flex-row;
+        justify-content: end;
+        gap: 1rem;
+    }
 
 
 }

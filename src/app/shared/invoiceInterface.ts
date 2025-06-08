@@ -7,27 +7,29 @@ export enum InvoiceStatus {
 
 export interface InvoiceItem {
     itemName: string,
-    quantity: string,
-    price: string,
-    itemTotal: string
+    quantity: number,
+    price: number,
+    itemTotal: number
 }
 
 
 export interface InvoiceInterface {
     id: string,
-    invoiceName: string,
-    invoiceDate: string,
-    invoicePurpose: string,
-    clientCompany: string,
-    paymentDate: string,
+    status: InvoiceStatus,
+    fromStreetAddress: string,
+    fromCity: string,
+    fromPostCode: string,
+    fromCountry: string,
     clientName: string,
     clientEmail: string,
-    status: InvoiceStatus,
+    clientStreetAddress: string,
+    clientCountry: string,
+    clientCity: string,
+    clientPostCode: string,
+    invoiceDate: string,
+    paymentTerms: string,
+    projectDescription: string,
     items: InvoiceItem[],
-    clientCountry?: string,
-    clientCity?: string,
-    clientStreetName?: string,
-    clientStreetNumber?: string
-    totalPrice: string
+    // totalPrice: number
 }
 

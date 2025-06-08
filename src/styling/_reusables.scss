@@ -1,3 +1,11 @@
+/* load spartan font*/
+@font-face {
+    font-family: 'Spartan';
+    src: url('https://fonts.googleapis.com/css2?family=Spartan:wght@400;500;700&display=swap');
+}
+
+
+
 /* colors */
 $lavender-indigo: #7C5DFA;
 $light-coral: rgb(255, 151, 151);
@@ -13,41 +21,87 @@ $dark-charcoal: #141625;
 $medium-purple: #9277FF;
 $space-grey: #373B53;
 $white: #ffffff;
-$yellow: #FF8F00;
-$snow-tint: #F9FAFE;
+$amber-orange: #FF8F00;
+$snow-tint: #E4F8F0;
 $slate-indigo: #48549F;
-
+$vibrant-teal: #33D69F;
+$neutral-gray: #979797;
+$soft-lime: #E0FFD2;
+$pale-butter: #FFFFAD;
+$icy-lilac:#EDEDFF;
+$bold-font-bg: #0C0E16;
+$status-color: #858BB2;
 
 
 
 /* fonts */
-@mixin h1-spartan() {
+@mixin h1-spartan-bold() {
+    font-family: 'Spartan', sans-serif;
     font-size: 2rem;
     line-height: 2.25rem;
-    // line-spacing: -1;
+    letter-spacing: -0.063rem;
+    color: $bold-font-bg;
+    font-weight: bold;
 }
 
 
-@mixin h2-spartan() {
+@mixin h2-spartan-bold() {
+    font-family: 'Spartan', sans-serif;
     font-size: 1.25rem;
     line-height: 1.375rem;
-    // word-spacing: -0.63
+    letter-spacing: -0.039rem;
+    color: $bold-font-bg;
+    font-weight: bold;
 }
 
 
-@mixin h3-spartan() {
+@mixin h3-spartan-bold() {
+    font-family: 'Spartan', sans-serif;
     font-size: 1rem;
     line-height: 1.5rem;
-    // word-spacing: -0.8
+    letter-spacing: -0.05rem;
+    color: $bold-font-bg;
+    font-weight: bold;
 }
 
 
-@mixin h3-spartan-small {
-    font-size: 1.25rem;
-    line-height: 1.5rem;
-    // word-spacing: -0.8
+@mixin h3-spartan-bold-small() {
+    font-family: 'Spartan', sans-serif;
+    font-size: 0.75rem;
+    line-height: 0.938rem;
+    letter-spacing: -0.016rem;
+    color: $bold-font-bg;
+    font-weight: bold;
 }
 
+@mixin body-1-spartan-medium() {
+    font-family: 'Spartan', sans-serif;
+    font-size: 0.75rem;
+    line-height: 0.938rem;
+    font-weight: 500;
+    letter-spacing: -0.016rem;
+
+}
+
+@mixin body-2-spartan-medium() {
+    font-family: 'Spartan', sans-serif;
+    font-size: 0.688rem;
+    line-height: 1.125rem;
+    font-weight: 500;
+    letter-spacing: -0.014rem;
+}
+
+
+
+
+
+
+@mixin reusable-form-flex-style {
+    width: 53%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+}
 
 
 @mixin container-style-flex {
@@ -67,4 +121,12 @@ $slate-indigo: #48549F;
 @mixin display-flex-column {
     display: flex;
     flex-direction: column;
+}
+
+
+@mixin status-button-defaults {
+    width: 6.5rem;
+    height: 2.5rem;
+    border-radius: 0.375rem;
+    align-self: center;
 }

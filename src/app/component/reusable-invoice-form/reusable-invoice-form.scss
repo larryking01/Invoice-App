@@ -1,0 +1,244 @@
+@use '../../../styling/reusables' as *;
+
+
+.reusable-invoice-form-container {
+    @include reusable-form-flex-style;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: $lavender-mist;
+    // background-color: $white;
+    border-top-right-radius: 1.25rem;
+    border-bottom-right-radius: 1.25rem;
+
+
+    .reusable-form-content {
+        padding: 3.5rem 3.5rem 0 3.5rem;
+        overflow:auto;
+    }
+
+    .form-role-text {
+        @include h2-spartan-bold();
+        margin-bottom: 3rem;
+    }
+
+
+    .bill {
+        @include h3-spartan-bold-small();
+        color: $lavender-indigo;
+        margin-bottom: 1.5rem;
+    }
+
+    .full-width {
+        @include display-flex-column;
+    }
+
+    label {
+        // display: block;
+        @include body-1-spartan-medium();
+        // width: 31.5rem;
+        margin-bottom: 0.625rem;
+        color: $cool-gray;
+    }
+
+    .full-width-input {
+        width: 31.5rem;
+        height: 3rem;
+        border-radius: 0.25rem;
+        margin-bottom: 1.5rem;
+        border: 1px solid $lavender-mist;
+        padding: 1rem 1.25rem;
+    }
+
+    .location {
+        @include display-flex-row;
+        gap: 1.5rem;
+    }
+
+    .third-width-input {
+        width: 9.5rem;
+        height: 3rem;
+        border-radius: 0.25rem;
+        margin-bottom: 3rem;
+        border: 1px solid $lavender-mist;
+        padding: 1rem 1.25rem;
+
+    }
+
+    .invoice-date-and-payment {
+        @include display-flex-row;
+        gap: 1.5rem;
+    }
+
+    .half-width-input {
+        width: 15rem;
+        height: 3rem;
+        border: 1px solid $lavender-mist;
+        border-radius: 0.25rem;
+        margin-bottom: 1.5rem;
+        padding: 1rem 1.25rem;
+    }
+
+    .item-list {
+        @include h2-spartan-bold();
+        color: $space-grey;
+        margin-bottom: 1rem;
+    }
+
+    .invoice-item-header {
+        @include display-flex-row;
+        width: 29rem;
+        justify-content: space-between;
+    }
+
+    .item-name {
+        @include body-1-spartan-medium();
+        width: 13.375rem;
+        margin-bottom: 0.625rem;
+        color: $cool-gray;
+    }
+
+    .quantity {
+        @include body-1-spartan-medium();
+        width: 2.875rem;
+        margin-bottom: 0.625rem;
+        color: $cool-gray;
+    }
+
+    .price {
+        @include body-1-spartan-medium();
+        width: 3.5rem;
+        margin-bottom: 0.625rem;
+        color: $cool-gray;
+    }
+
+    .total {
+        @include body-1-spartan-medium();
+        width: 3.5rem;
+        margin-bottom: 0.625rem;
+        color: $cool-gray;
+    }
+
+    .invoice-items-div {
+        @include display-flex-row;
+        justify-content: space-between;
+        margin-bottom: 1.125rem;
+        // gap: 1rem;
+    }
+
+    .invoice-item-name {
+        width: 11rem;
+        height: 3rem;
+        padding: 1rem 1.25rem;
+        border-radius: 0.25rem;
+        border: 1px solid $lavender-mist;
+    }
+
+    .invoice-item-qty {
+        width: 6em;
+        height: 3rem;
+        padding: 1rem 0.7rem;
+        border-radius: 0.25rem;
+        border: 1px solid $lavender-mist;
+    }
+
+    .invoice-item-price {
+        width: 6rem;
+        height: 3rem;
+        padding: 1rem 1.25rem;
+        border-radius: 0.25rem;
+        border: 1px solid $lavender-mist;
+    }
+
+    .invoice-item-total {
+        width: 2.813rem;
+        align-self: center;
+    }
+
+    .icon-delete {
+        width: 0.9rem;
+        height: 1rem;
+        align-self: center;
+        cursor: pointer;
+    }
+
+    .add-invoice-item {
+        width: 31.5rem;
+        height: 3rem;
+        border-radius: 0.25rem;
+        margin-bottom: 3.438rem;
+        border: 1px solid $lavender-mist;
+        padding: 1rem 1.25rem;
+        background-color: $snow-tint;
+        border-radius: 1.5rem;
+        text-align: center;
+    }
+
+    .add-invoice-item-span {
+        cursor: pointer;
+        @include h3-spartan-bold-small();
+        color: $cool-gray;
+    }
+
+    .action-buttons-div {
+        margin-bottom: 2rem;
+    }
+
+
+    .edit-action-buttons {
+        @include display-flex-row;
+        justify-content: end;
+    }
+
+    .cancel-btn {
+        height: 3rem;
+        width: 6rem;
+        border-radius: 1.5rem;
+        @include h3-spartan-bold-small();
+        border: none;
+        cursor: pointer;
+        color: $slate-indigo;
+        padding: 1rem 1.5rem;
+        background-color: $snow-tint;
+        margin-right: 0.7rem;
+    }
+
+    .save-changes-btn {
+        width: 8.5rem;
+        height: 3rem;
+        background-color: $lavender-indigo;
+        @include h3-spartan-bold-small();
+        color: $white;
+        border: none;
+        cursor: pointer;
+        padding: 1rem 1.5rem;
+        border-radius: 1.5rem;
+    }
+
+    .new-action-buttons {
+        @include display-flex-row;
+        justify-content: space-between;
+    }
+
+    .form-error {
+        color: red;
+        margin: 1rem 0;
+    }
+
+    .save-draft {
+        height: 3rem;
+        width: 8.313rem;
+        background-color: $space-grey;
+        cursor: pointer;
+        padding: 1rem 1.5rem;
+        border-radius: 1.5rem;
+        border: none;
+        @include h3-spartan-bold-small();
+        color: $light-slate-blue;
+        margin-right: 0.7rem;
+    }
+
+
+
+
+}
