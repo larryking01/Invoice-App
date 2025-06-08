@@ -38,9 +38,9 @@
                 @for( invoice of invoicesArray; track invoice.id ) {
                         <div class="invoice-card">
                             <p class="invoice-id"><span class="invoice-item-id">#</span>{{ invoice.id }}</p>
-                            <p class="date">Due {{ invoice.paymentDate }}</p>
+                            <p class="date">Due {{ invoice.paymentTerms }}</p>
                             <p class="name">{{ invoice.clientName }}</p>
-                            <p class="price">{{ invoice.totalPrice }}</p>
+                            <p class="price">{{ invoice.clientCity }}</p>
                             <p [ngClass]="{
                                 'paid': invoice.status === 'Paid',
                                 'pending': invoice.status === 'Pending',

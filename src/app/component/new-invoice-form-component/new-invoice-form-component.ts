@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
-// import { Sidebar } from '../sidebar/sidebar';
+import { Component, inject } from '@angular/core';
+import { InvoiceService } from '../../services/invoice-service';
+import { InvoiceInterface, InvoiceStatus } from '../../shared/invoiceInterface';
+// import { InvoiceStatus } from '../../shared/invoiceInterface';
 import { ReusableInvoiceForm } from '../reusable-invoice-form/reusable-invoice-form';
 
 
@@ -10,5 +12,33 @@ import { ReusableInvoiceForm } from '../reusable-invoice-form/reusable-invoice-f
   styleUrl: './new-invoice-form-component.scss'
 })
 export class NewInvoiceFormComponent {
+  invoiceService = inject( InvoiceService );
+  form_submit_type: string = ''
+
+  getFormSubmitType( formSubmitType: string ) {
+    this.form_submit_type = formSubmitType;
+  }
+
+  addNewInvoice( newInvoice: InvoiceInterface ) {
+    if( this.form_submit_type === 'save') {
+      let invoiceToAdd: InvoiceInterface = {
+        ...newInvoice,
+        id: this.invoiceService.generateInvoiceId(),
+        status: InvoiceStatus.pending
+      }
+
+      this.invoiceService.createInvoice( invoiceToAdd );
+    }
+    else {
+      let invoiceToAdd: InvoiceInterface = {
+        ...newInvoice,
+        id: this.invoiceService.generateInvoiceId(),
+        status: InvoiceStatus.draft
+      }
+      
+      this.invoiceService.createInvoice( invoiceToAdd );
+    }
+  }
+
 
 }

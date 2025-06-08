@@ -1,1 +1,4 @@
-<reusable-invoice-form></reusable-invoice-form>
+<reusable-invoice-form [invoiceToEditDetail]="invoiceToEdit" 
+                       (newInvoice)="getCurrentInvoice($event)"
+                       (updatedInvoice)="getUpdatedInvoice($event)">
+</reusable-invoice-form>

@@ -1,88 +1,105 @@
 [
   {
     "id": "RT3080",
-    "invoiceName": "Website Design",
     "invoiceDate": "2025-06-01",
-    "paymentDate": "2025-06-10",
+    "paymentTerms": "0",
     "clientName": "Acme Corp",
+    "fromStreetAddress": "43BG",
+    "fromCity": "Accra",
+    "fromPostCode": "GA-102-3891",
+    "fromCountry": "Ghana",
     "clientEmail": "client@acme.com",
     "status": "Paid",
+    "projectDescription": "Marketing Campaign",
     "items": [
       {
         "itemName": "Landing Page Design",
         "quantity": "2",
         "price": "500",
-        "itemTotal": "213"
+        "itemTotal": "1000"
       },
       {
         "itemName": "Logo Design",
         "quantity": "1",
         "price": "200",
-        "itemTotal": "853"
-
+        "itemTotal": "200"
       }
     ],
     "clientCountry": "USA",
     "clientCity": "New York",
-    "clientStreetName": "Broadway",
-    "clientStreetNumber": "123",
-    "totalPrice": "3,543.96"
+    "clientPostCode": "10036",
+    "clientStreetAddress": "123 Broadway",
+    "totalPrice": "1200"
   },
   {
-    "id": "IH3080",
-    "invoiceName": "Mobile App Development",
-    "invoiceDate": "2025-05-25",
-    "paymentDate": "2025-06-15",
-    "clientName": "BetaTech",
-    "clientEmail": "info@betatech.com",
+    "id": "XM9141",
+    "invoiceDate": "2025-05-15",
+    "paymentTerms": "0",
+    "clientName": "Beta Solutions",
+    "fromStreetAddress": "45B Tech Street",
+    "fromCity": "Kumasi",
+    "fromPostCode": "AK-203-9481",
+    "fromCountry": "Ghana",
+    "clientEmail": "contact@betasolutions.com",
     "status": "Pending",
+    "projectDescription": "Web App Development",
     "items": [
       {
-        "itemName": "iOS App",
-        "quantity": "1",
-        "price": "3000",
-        "itemTotal": "853"
+        "itemName": "Frontend Module",
+        "quantity": "3",
+        "price": "750",
+        "itemTotal": "2250"
       },
       {
-        "itemName": "Android App",
-        "quantity": "1",
-        "price": "3000",
-        "itemTotal": "8984"
+        "itemName": "Backend API",
+        "quantity": "2",
+        "price": "1200",
+        "itemTotal": "2400"
       }
     ],
     "clientCountry": "Canada",
     "clientCity": "Toronto",
-    "clientStreetName": "King Street",
-    "clientStreetNumber": "456",
-    "totalPrice": "8,543.96"
-
+    "clientPostCode": "M5H 2N2",
+    "clientStreetAddress": "78 King Street",
+    "totalPrice": "4650"
   },
   {
-    "id": "WK3080",
-    "invoiceName": "SEO Optimization",
-    "invoiceDate": "2025-04-15",
-    "paymentDate": "2025-04-30",
-    "clientName": "Gamma LLC",
-    "clientEmail": "contact@gammallc.com",
+    "id": "RG2042",
+    "invoiceDate": "2025-04-28",
+    "paymentTerms": "0",
+    "clientName": "Global Edge Ltd",
+    "fromStreetAddress": "12 Global Ave",
+    "fromCity": "Tema",
+    "fromPostCode": "TE-543-2020",
+    "fromCountry": "Ghana",
+    "clientEmail": "invoices@globaledge.com",
     "status": "Draft",
+    "projectDescription": "IT Infrastructure Setup",
     "items": [
       {
-        "itemName": "Initial Audit",
+        "itemName": "Server Installation",
         "quantity": "1",
-        "price": "400",
-        "itemTotal": "233"
+        "price": "3500",
+        "itemTotal": "3500"
       },
       {
-        "itemName": "Monthly Maintenance",
-        "quantity": "3",
-        "price": "250",
-        "itemTotal": "853"
+        "itemName": "Network Cabling",
+        "quantity": "5",
+        "price": "200",
+        "itemTotal": "1000"
+      },
+      {
+        "itemName": "Maintenance Training",
+        "quantity": "2",
+        "price": "300",
+        "itemTotal": "600"
       }
     ],
-    "clientCountry": "UK",
-    "clientCity": "London",
-    "clientStreetName": "Oxford Street",
-    "clientStreetNumber": "789",
-    "totalPrice": "5,543.96"
+    "clientCountry": "Germany",
+    "clientCity": "Berlin",
+    "clientPostCode": "10115",
+    "clientStreetAddress": "10 Tech Park",
+    "totalPrice": "5100"
   }
+
 ]

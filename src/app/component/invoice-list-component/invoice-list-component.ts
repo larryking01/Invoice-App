@@ -1,11 +1,9 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Sidebar } from '../sidebar/sidebar';
-// import { RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
 import { InvoiceService } from '../../services/invoice-service';
 import { InvoiceInterface } from '../../shared/invoiceInterface';
-import { InvoiceStatus } from '../../shared/invoiceInterface';
 import { PrependDotPipe } from '../../pipes/prepend-dot-pipe';
 
 @Component({
@@ -17,9 +15,7 @@ import { PrependDotPipe } from '../../pipes/prepend-dot-pipe';
 export class InvoiceListComponent implements OnInit {
   router = inject( Router );
   invoiceService = inject( InvoiceService );
-  // showInvoices: boolean = true;
   invoicesArray: InvoiceInterface[] = [];
-  // numberOfInvoices: number = 0;
 
 
   ngOnInit(): void {
@@ -30,7 +26,7 @@ export class InvoiceListComponent implements OnInit {
     })
   }
 
-  navigateToInvoiceDetails(invoiceID: string) {
+  navigateToInvoiceDetails(invoiceID: string | undefined ) {
     this.router.navigate(['invoices', invoiceID])
   }
 
@@ -45,36 +41,36 @@ export class InvoiceListComponent implements OnInit {
   }
 
 
-  new_invoice: InvoiceInterface = {
-    id: "VFG534",
-    invoiceName: "Website Design",
-    invoiceDate: "2025-06-01",
-    paymentDate: "2025-06-10",
-    clientName: "Acme Corp",
-    clientEmail: "client@acme.com",
-    clientCompany: "Nestle",
-    invoicePurpose: 'Marketing',
-    status: InvoiceStatus.draft,
-    items: [
-      {
-        itemName: "Landing Page Design",
-        quantity: 4,
-        price: 500,
-        itemTotal: 345
-      },
-      {
-        itemName: "Logo Design",
-        quantity: 3,
-        price: 200,
-        itemTotal: 123
-      }
-    ],
-    clientCountry: "USA",
-    clientCity: "New York",
-    clientStreetName: "Broadway",
-    clientStreetNumber: "123",
-    totalPrice: 3543.96
-};
+//   new_invoice: InvoiceInterface = {
+//     id: "VFG534",
+//     invoiceName: "Website Design",
+//     invoiceDate: "2025-06-01",
+//     paymentDate: "2025-06-10",
+//     clientName: "Acme Corp",
+//     clientEmail: "client@acme.com",
+//     clientCompany: "Nestle",
+//     invoicePurpose: 'Marketing',
+//     status: InvoiceStatus.draft,
+//     items: [
+//       {
+//         itemName: "Landing Page Design",
+//         quantity: 4,
+//         price: 500,
+//         itemTotal: 345
+//       },
+//       {
+//         itemName: "Logo Design",
+//         quantity: 3,
+//         price: 200,
+//         itemTotal: 123
+//       }
+//     ],
+//     clientCountry: "USA",
+//     clientCity: "New York",
+//     clientStreetName: "Broadway",
+//     clientStreetNumber: "123",
+//     totalPrice: 3543.96
+// };
 
 
 

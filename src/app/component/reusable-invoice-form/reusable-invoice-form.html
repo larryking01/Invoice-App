@@ -2,30 +2,35 @@
     <sidebar></sidebar>
 
     <div class="reusable-form-content">
-        <p class="form-role-text">New Invoice</p>
+        @if( invoiceToEditDetail ) {
+            <p class="form-role-text">Edit <span>#</span>{{ invoiceToEditDetail.id }}</p>
+        }
+        @else {
+            <p class="form-role-text">New Invoice</p>
+        }
 
         <form [formGroup]="invoiceForm" (ngSubmit)="onSubmit()">
             <p class="bill">Bill From</p>
 
             <div class="full-width">
                 <label for="street-address">Street Address</label>
-                <input id="street-address" type="text" formControlName="streetAddress" class="full-width-input">
+                <input id="street-address" type="text" formControlName="fromStreetAddress" class="full-width-input">
             </div>
 
             <div class="location">
                 <div class="full-width">
                     <label for="city">City</label>
-                    <input id="city" type="text" formControlName="city" class="third-width-input">
+                    <input id="city" type="text" formControlName="fromCity" class="third-width-input">
                 </div>
 
                 <div class="full-width">
                     <label for="postCode">Post Code</label>
-                    <input type="text" formControlName="postCode" class="third-width-input">
+                    <input type="text" formControlName="fromPostCode" class="third-width-input">
                 </div>
 
                 <div class="full-width">
                     <label for="country">Country</label>
-                    <input type="text" formControlName="country" class="third-width-input">
+                    <input type="text" formControlName="fromCountry" class="third-width-input">
                 </div>
             </div>
 
@@ -71,7 +76,12 @@
 
                 <div class="full-width">
                     <label for="paymentTerms">Payment Terms</label>
-                    <input type="text" formControlName="paymentTerms" class="half-width-input">
+                    <select formControlName="paymentTerms" class="half-width-input">
+                        <option value="0">Net 1 Day</option>
+                        <option value="1">Net 7 Days</option>
+                        <option value="2">Net 14 Days</option>
+                        <option value="3">Net 30 Days</option>
+                    </select>
                 </div>
             </div>
 
@@ -108,7 +118,22 @@
 
 
             <div class="action-buttons-div">
-                <button type="submit">Submit Form</button>
+                @if( invoiceToEditDetail ) {
+                    <div class="edit-action-buttons">
+                        <button type="button" class="cancel-btn" (click)="goBackNavigation()">Cancel</button>
+                        <button type="submit" class="save-changes-btn">Save Changes</button>
+                    </div>
+                }
+                @else {
+                    <div class="new-action-buttons">
+                        <button type="button" class="cancel-btn" (click)="goBackNavigation()">Discard</button>
+
+                        <div class="save-action-btns">
+                            <button type="button" class="save-draft" (click)="submitAsDraft()">Save As Draft</button>
+                            <button type="submit" class="save-changes-btn">Save & Send</button>
+                        </div>
+                    </div>
+                }
             </div>
         </form>
     </div>

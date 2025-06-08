@@ -1,7 +1,9 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { Sidebar } from '../sidebar/sidebar';
-import { ReactiveFormsModule, FormBuilder, FormArray, FormGroup, Form, NgModel } from '@angular/forms';
+import { Component, inject, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+import { ReactiveFormsModule, FormBuilder, FormArray, FormGroup } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Location } from '@angular/common';
+import { Sidebar } from '../sidebar/sidebar';
+import { InvoiceInterface } from '../../shared/invoiceInterface';
 
 
 @Component({
@@ -10,16 +12,23 @@ import { CommonModule } from '@angular/common';
   templateUrl: './reusable-invoice-form.html',
   styleUrl: './reusable-invoice-form.scss'
 })
-export class ReusableInvoiceForm implements OnInit {
+export class ReusableInvoiceForm implements OnInit, OnChanges {
+  @Input() invoiceToEditDetail: InvoiceInterface | undefined = undefined;
+  @Output() newInvoice = new EventEmitter<any>();
+  @Output() updatedInvoice = new EventEmitter<any>();
+  @Output() formSubmitType = new EventEmitter<string>()
+
   formBuilder = inject( FormBuilder )
   invoiceForm!: FormGroup
+  location = inject( Location )
 
   ngOnInit(): void {
+    console.log("invoice to edit = ", this.invoiceToEditDetail )
     this.invoiceForm = this.formBuilder.group({
-      streetAddress: [''],
-      city: [''],
-      postCode: [''],
-      country: [''],
+      fromStreetAddress: [''],
+      fromCity: [''],
+      fromPostCode: [''],
+      fromCountry: [''],
       clientName:[''],
       clientEmail: [''],
       clientStreetAddress: [''],
@@ -27,11 +36,59 @@ export class ReusableInvoiceForm implements OnInit {
       clientPostCode: [''],
       clientCountry: [''],
       invoiceDate: [''],
-      paymentTerms: [''],
+      paymentTerms: ['0'],
       projectDescription: [''],
       items: this.formBuilder.array([ this.createInvoiceItem() ])  // start with a single invoice item
     })
+
+
+    if (this.invoiceToEditDetail) {
+      this.populateFormWithInvoice(this.invoiceToEditDetail);
+    }
   }
+
+
+  populateFormWithInvoice(invoice: InvoiceInterface): void {
+    this.invoiceForm.patchValue({
+      fromStreetAddress: invoice.fromStreetAddress,
+      fromCity: invoice.fromCity,
+      fromPostCode: invoice.fromPostCode,
+      fromCountry: invoice.fromCountry,
+      clientName: invoice.clientName,
+      clientEmail: invoice.clientEmail,
+      clientStreetAddress: invoice.clientStreetAddress,
+      clientCity: invoice.clientCity,
+      clientPostCode: invoice.clientPostCode,
+      clientCountry: invoice.clientCountry,
+      invoiceDate: invoice.invoiceDate,
+      paymentTerms: invoice.paymentTerms,
+      projectDescription: invoice.projectDescription
+    });
+
+    const itemsArray = this.invoiceForm.get('items') as FormArray;
+    itemsArray.clear();
+
+    invoice.items.forEach(item => {
+      const itemGroup = this.formBuilder.group({
+        itemName: [item.itemName],
+        quantity: [item.quantity],
+        price: [item.price],
+        total: [item.itemTotal]
+      });
+
+      this.subscribeToItemChanges(itemGroup);
+      this.calculateItemTotal(itemGroup);      
+      itemsArray.push(itemGroup);
+    });
+  }
+
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['invoiceToEditDetail'] && this.invoiceToEditDetail && this.invoiceForm) {
+      this.populateFormWithInvoice(this.invoiceToEditDetail);
+    }
+  }
+
 
   // create a single invoice item
   createInvoiceItem(): FormGroup {
@@ -81,16 +138,45 @@ export class ReusableInvoiceForm implements OnInit {
 
   onSubmit(): void {
     if (this.invoiceForm.valid) {
-      const invoiceData = this.invoiceForm.getRawValue(); // includes disabled fields like `total`
-      console.log('Submitted Invoice Data:', invoiceData);
-
-      // You can now send `invoiceData` to a service or backend
-    } else {
+      if( this.invoiceToEditDetail ) {
+        console.log('edit')
+        this.newInvoice.emit(this.invoiceToEditDetail)
+        this.updatedInvoice.emit(this.invoiceForm.value)
+      }
+      else {
+        const invoiceData = this.invoiceForm.getRawValue();
+        console.log('Submitted Invoice Data:', invoiceData);
+        this.newInvoice.emit( invoiceData )
+        this.formSubmitType.emit("save")
+      }
+    } 
+    else {
       console.log('Form is invalid');
-      this.invoiceForm.markAllAsTouched(); // optional: to show validation errors
+      this.invoiceForm.markAllAsTouched(); 
     }
   }
-    
+
+
+  submitAsDraft() {
+    if( this.invoiceForm.valid ) {
+      const invoiceData = this.invoiceForm.getRawValue();
+      console.log('Submitted Invoice Data:', invoiceData);
+      this.newInvoice.emit( invoiceData )
+      this.formSubmitType.emit("draft")
+      console.log("invoice saved as draft")
+    }
+    else {
+      console.log('Form is invalid');
+      this.invoiceForm.markAllAsTouched(); 
+    }
+
+  }
+
+
+  goBackNavigation() {
+    this.location.back()
+  }
+
 
 
 

@@ -65,5 +65,19 @@ export class InvoiceService {
   }
 
 
+  generateInvoiceId(): string {
+    const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    
+    // Generate 2 random uppercase letters
+    const randomPrefix =
+      letters[Math.floor(Math.random() * letters.length)] +
+      letters[Math.floor(Math.random() * letters.length)];
+
+    // Generate 4-digit number
+    const randomDigits = Math.floor(1000 + Math.random() * 9000);
+
+    return `${randomPrefix}${randomDigits}`;
+  }
+
 
 }

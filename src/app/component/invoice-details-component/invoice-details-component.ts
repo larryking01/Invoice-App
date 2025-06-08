@@ -27,13 +27,16 @@ export class InvoiceDetailsComponent implements OnInit {
 
   current_invoice: InvoiceInterface = {
     id: "VFG534",
-    invoiceName: "Website Design",
     invoiceDate: "2025-06-01",
-    paymentDate: "2025-06-10",
+    paymentTerms: "2025-06-10",
     clientName: "Acme Corp",
     clientEmail: "client@acme.com",
-    clientCompany: "Nestle",
-    invoicePurpose: 'Marketing',
+    clientPostCode: "tu%",
+    fromStreetAddress: "K143 Adenta",
+    fromCity: "London",
+    fromCountry: "Spain",
+    fromPostCode: "AC312",
+    projectDescription: 'Marketing',
     status: InvoiceStatus.draft,
     items: [
       {
@@ -51,40 +54,42 @@ export class InvoiceDetailsComponent implements OnInit {
     ],
     clientCountry: "USA",
     clientCity: "New York",
-    clientStreetName: "Broadway",
-    clientStreetNumber: "123",
-    totalPrice: 3543.96
+    clientStreetAddress: "Broadway",
+    // totalPrice: 3543.96
   };
 
+
   updated_invoice: InvoiceInterface = {
-      id: "VFG534",
-      invoiceName: "Website Design",
-      invoiceDate: "2025-06-01",
-      paymentDate: "2025-06-10",
-      clientName: "Acme Corp",
-      clientEmail: "client@acme.com",
-      clientCompany: "Nestle",
-      invoicePurpose: 'Sales',
-      status: InvoiceStatus.draft,
-      items: [
-        {
-          itemName: "Landing Page Design",
-          quantity: 4,
-          price: 500,
-          itemTotal: 345
-        },
-        {
-          itemName: "Logo Design",
-          quantity: 3,
-          price: 200,
-          itemTotal: 123
-        }
-      ],
-      clientCountry: "USA",
-      clientCity: "New York",
-      clientStreetName: "Broadway",
-      clientStreetNumber: "123",
-      totalPrice: 3543.96
+    id: "GHANA12214",
+    invoiceDate: "2025-06-01",
+    paymentTerms: "2025-06-10",
+    clientName: "Acme Corp",
+    clientEmail: "client@acme.com",
+    clientPostCode: "tu%",
+    fromStreetAddress: "K143 Adenta",
+    fromCity: "London",
+    fromCountry: "Spain",
+    fromPostCode: "AC312",
+    projectDescription: 'Marketing',
+    status: InvoiceStatus.draft,
+    items: [
+      {
+        itemName: "Landing Page Design",
+        quantity: 4,
+        price: 500,
+        itemTotal: 345
+      },
+      {
+        itemName: "Logo Design",
+        quantity: 3,
+        price: 200,
+        itemTotal: 123
+      }
+    ],
+    clientCountry: "USA",
+    clientCity: "New York",
+    clientStreetAddress: "Broadway",
+    // totalPrice: 3543.96
   };
   
 
@@ -127,7 +132,7 @@ export class InvoiceDetailsComponent implements OnInit {
   }
 
 
-  navigateToEditInvoice(invoiceID: string) {
+  navigateToEditInvoice(invoiceID: string | undefined) {
     this.router.navigate([
       {
         outlets: {

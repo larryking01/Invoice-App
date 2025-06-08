@@ -25,13 +25,13 @@
                 <div class="invoice-intro">
                     <div class="invoice-id-and-name">
                         <h3>{{ selectedInvoice?.id }}</h3>
-                        <p>{{ selectedInvoice?.invoicePurpose }}</p>
+                        <p>{{ selectedInvoice?.projectDescription }}</p>
                     </div>
 
                     <div class="invoice-location">
-                        <p>{{ selectedInvoice?.clientCompany }}</p>
-                        <p>{{ selectedInvoice?.clientStreetName }}</p>
-                        <p>{{ selectedInvoice?.clientStreetNumber }}</p>
+                        <p>{{ selectedInvoice?.clientEmail }}</p>
+                        <p>{{ selectedInvoice?.clientEmail }}</p>
+                        <p>{{ selectedInvoice?.clientEmail }}</p>
                         <p>{{ selectedInvoice?.clientCountry }}</p>
                     </div>
                 </div>
@@ -45,16 +45,16 @@
 
                         <div class="payment-date">
                             <p>Payment Date</p>
-                            <h3>{{ selectedInvoice?.paymentDate }}</h3>
+                            <h3>{{ selectedInvoice?.paymentTerms }}</h3>
                         </div>
                     </div>
 
                     <div class="bill-to">
                         <p>Bill To</p>
                         <h3>{{ selectedInvoice?.clientName }}</h3>
-                        <p>{{ selectedInvoice?.clientCompany }}</p>
-                        <p>{{ selectedInvoice?.clientStreetName }}</p>
-                        <p>{{ selectedInvoice?.clientStreetNumber }}</p>
+                        <p>{{ selectedInvoice?.clientPostCode }}</p>
+                        <p>{{ selectedInvoice?.clientPostCode }}</p>
+                        <p>{{ selectedInvoice?.clientPostCode }}</p>
                         <p>{{ selectedInvoice?.clientCountry }}</p>
                     </div>
 
