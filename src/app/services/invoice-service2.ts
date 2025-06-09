@@ -25,11 +25,8 @@ export class InvoiceService {
 
   
   updateInvoice(currentInvoice: InvoiceInterface, updatedInvoice: InvoiceInterface) {
-    console.log("invoice service current invoice = ", currentInvoice );
-    console.log("invoice service updated invoice = ", updatedInvoice );
     let currentInvoices = this.allInvoicesArray.getValue()
     let invoiceToUpdateIndex = currentInvoices.findIndex( invItem => invItem.id === currentInvoice.id );
-    console.log("id of invoice to update = ", invoiceToUpdateIndex )
     let updatedInvoices = [...currentInvoices];
     updatedInvoices[invoiceToUpdateIndex] = updatedInvoice;
     this.allInvoicesArray.next( updatedInvoices )
@@ -42,10 +39,9 @@ export class InvoiceService {
     storedInvoices.subscribe({
       next: ( data ) => {
         this.allInvoicesArray.next( data );
-        console.log("fetch all invoices service all invoices array = ", this.allInvoicesArray)
       },
       error: ( err ) => {
-        console.error('failed to fetch invoice data: ', err)
+        // console.error('failed to fetch invoice data: ', err)
       }
     })
   }
