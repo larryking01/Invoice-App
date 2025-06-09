@@ -37,13 +37,11 @@ export class InvoiceDetailsComponent implements OnInit {
     this.invoicesGrandTotal = this.calculateGrandInvoiceTotal( this.chosenInvoice )
 
     this.hideDeleteModal()
-    console.log("selected invoice$ = ", this.selectedInvoice$ )
 
   }
 
   showDeleteModalTrue() {
     this.showDeleteModal = true
-    console.log( this.showDeleteModal )
   }
 
   hideDeleteModal() {

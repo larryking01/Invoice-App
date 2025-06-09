@@ -30,7 +30,7 @@ export class InvoiceService {
           localStorage.setItem(this.STORAGE_KEY, JSON.stringify(data));
         },
         error: (err) => {
-          console.error('Failed to fetch invoice data: ', err);
+          // console.error('Failed to fetch invoice data: ', err);
         }
       });
     }
@@ -59,9 +59,6 @@ export class InvoiceService {
       this.allInvoicesArray.next(updatedInvoices);
       this.updateLocalStorage(updatedInvoices);
     }
-    console.log("update service, current invoice = ", currentInvoice)
-    console.log("update service, updated invoice = ", updatedInvoice)
-    console.log("updated invoices array = ", this.allInvoicesArray.getValue())
   }
 
 
@@ -70,8 +67,6 @@ export class InvoiceService {
     const updatedInvoices = currentInvoices.filter(inv => inv.id !== invoice.id);
     this.allInvoicesArray.next(updatedInvoices);
     this.updateLocalStorage(updatedInvoices);
-    console.log("invoice service delete = ", currentInvoices )
-    console.log("after delete = ", updatedInvoices )
   }
 
 

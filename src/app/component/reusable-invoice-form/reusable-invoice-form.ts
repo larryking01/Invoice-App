@@ -24,7 +24,6 @@ export class ReusableInvoiceForm implements OnInit, OnChanges {
   location = inject( Location )
 
   ngOnInit(): void {
-    console.log("invoice to edit = ", this.invoiceToEditDetail )
     this.invoiceForm = this.formBuilder.group({
       fromStreetAddress: ['', Validators.required],
       fromCity: ['', Validators.required],
@@ -140,9 +139,6 @@ export class ReusableInvoiceForm implements OnInit, OnChanges {
   onSubmit(): void {
     if (this.invoiceForm.valid) {
       if( this.invoiceToEditDetail ) {
-        console.log('edit')
-        console.log("edit: new invoice = ", this.invoiceToEditDetail)
-        console.log("edit: updated invoice = ", this.invoiceForm.value)
         // this.invoiceUpdated.emit({
         //   original: this.invoiceToEditDetail,
         //   updated: this.invoiceForm.getRawValue() as InvoiceInterface
@@ -150,13 +146,11 @@ export class ReusableInvoiceForm implements OnInit, OnChanges {
       }
       else {
         const invoiceData = this.invoiceForm.getRawValue();
-        console.log('Submitted Invoice Data:', invoiceData);
         this.newInvoice.emit( invoiceData )
         this.formSubmitType.emit("save")
       }
     } 
     else {
-      console.log('Form is invalid');
       this.invoiceForm.markAllAsTouched(); 
     }
   }
@@ -165,13 +159,10 @@ export class ReusableInvoiceForm implements OnInit, OnChanges {
   submitAsDraft() {
     if( this.invoiceForm.valid ) {
       const invoiceData = this.invoiceForm.getRawValue();
-      console.log('Submitted Invoice Data:', invoiceData);
       this.newInvoice.emit( invoiceData )
       this.formSubmitType.emit("draft")
-      console.log("invoice saved as draft")
     }
     else {
-      console.log('Form is invalid');
       this.invoiceForm.markAllAsTouched(); 
     }
 

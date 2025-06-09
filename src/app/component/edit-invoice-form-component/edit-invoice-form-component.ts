@@ -23,7 +23,6 @@ export class EditInvoiceFormComponent implements OnInit {
 
     if( invoiceToEditID ) {
       this.invoiceToEdit = this.invoiceService.fetchTargetInvoice( invoiceToEditID );
-      console.log("invoice to edit = ", this.invoiceToEdit )
     }
   }
 
